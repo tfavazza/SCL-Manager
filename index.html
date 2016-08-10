@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>SCL Manager</title>
+
+      <script src="vendor.bundle.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
+
+          <link type="text/css" rel="stylesheet" href="..\bower_components\flag-icon-css\css\flag-icon.min.css"/>
+
+
+
+    </head>
+    <body class="container-fluid">
+      <center><h1>SCL Manager</h1>
+         <div id="upload-file"><input type="file" id="file" name="files[]" />
+           <output id="list"></output>
+           <button id="zip-file" class="btn btn-primary">Upload .zip file!
+           </button>
+         </div>
+        </div>
+      </center>
+
+  <ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#standings">League Standings</a></li>
+  <li><a data-toggle="tab" href="#this-week">Games This Week</a></li>
+  <li><a data-toggle="tab" href="#full-schedule">Full Schedule</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="standings" class="tab-pane fade in active">
+    <h3>Last Updated 08/08/2016</h3>
+       <div id="league-data"></div>
+  </div>
+  <div id="this-week" class="tab-pane fade">
+    <h3>Games the Week of [Date] to [Date]</h3>
+    <p>Wow there's going to to be games here, by League!</p>
+  </div>
+  <div id="full-schedule" class="tab-pane fade">
+    <h3>Full Schedule for SCL Season 3</h3>
+    <p>This'll have games in that same format only split up by week</p>
+  </div>
+</div>
+
+<div id="player-modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+    <div id="player-schedule"></div>
+   </div>
+  </div>
+</div>
+
+
+
+
+    </body>
+</html>
