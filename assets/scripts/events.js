@@ -8,11 +8,11 @@ const ui = require('./ui.js');
 const onDisplayLeagueData = function(data) {
 	api.displayLeagueData(data)
 	.done(ui.displayLeagueDataSuccess)
-	.fail(console.error(data));
+	.fail(console.error());
 };
 
-const onZipFileUpload = function() {
-	console.log("send files to the butt!")
+const onZipFileUpload = function(data) {
+	api.zipFileUpload(data)
 	.done(ui.zipFileUploadSuccess)
 	.fail(console.log("JK no butt"));
 
@@ -20,7 +20,7 @@ const onZipFileUpload = function() {
 
 const onDisplayPlayerSchedule = function(event) {
 	event.preventDefault();
-	let player = event.target.id
+	let player = event.target.id;
 	console.log(player);
 	api.displayPlayerSchedule(player)
 	.done(ui.displayPlayerScheduleSuccess)
@@ -31,10 +31,10 @@ const displayLeagueMembers = function() {
 	$('.division-name').children().toggle();
 };
 
-const onDisplayAllSchedule = function(data) {
-	api.displayAllSchedule(data)
+const onDisplayAllSchedule = function() {
+	api.displayAllSchedule()
 	.done(ui.showAllScheduleSuccess)
-	.fail(console.error("oops"));
+	.fail(console.error("something went wrong"));
 };
 
 
@@ -43,6 +43,7 @@ const addHandlers = function() {
 $('.division-name').on('click', displayLeagueMembers);
 $('#zip-file').on('click', onZipFileUpload);
 $(document).ready(onDisplayLeagueData);
+$(document).ready(onDisplayAllSchedule);
 $(document).on('click', '.btn', onDisplayPlayerSchedule);
 
 };

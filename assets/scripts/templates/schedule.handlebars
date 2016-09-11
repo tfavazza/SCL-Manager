@@ -1,0 +1,42 @@
+<div id="accordion" role="tablist" aria-multiselectable="true">
+
+	{{#each this}}
+
+	<div class="panel panel-success col-md-2 .lead">
+    	<div class="panel-heading" role="tab" id="heading{{week}}">
+      		<h4 class="division-name">
+        		<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{week}}" aria-expanded="true" aria-controls="collapse{{week}}">
+					Week {{week}}
+				</a>
+     		 </h4>
+    	</div>
+
+		<div id="collapse{{week}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{week}}">
+
+			<div id="accordion1" role="tablist" aria-multiselectable="true">
+				{{#each player1}}
+					<div class="panel panel-warning">
+    					<div class="panel-heading" role="tab" id="heading{{name}}">
+        					<a data-toggle="collapse" data-parent="#accordion1" href="#collapse{{name}}" aria-expanded="true" aria-controls="collapse{{name}}">
+	 							<span class="flag-icon flag-icon-{{country}}"></span> {{divisionName}}
+	 						</a>
+	 					</div>
+
+	 					<div id="collapse{{name}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{name}}">
+	 						<div text="center">
+	 							<div class="btn btn-sm btn-info" id="{{name}}" data-toggle="modal" data-target="#player-modal">Full Schedule
+		 						</div>
+		 					</div>
+	 						<div> Score: {{score}}</div>
+	 						<div> Wins: {{wins}}</div>
+	 						<div> Losses: {{losses}} </div>
+	 						<div> Draws: {{draws}} </div>
+	 						<div> Games Played: {{matchesPlayed}}</div>
+	 				</div>
+	 				</div>
+				{{/each}}
+			</div>
+		 </div>
+  	</div>
+	{{/each}}
+</div>

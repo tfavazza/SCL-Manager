@@ -18,8 +18,8 @@ const zipFileUpload = function(data) {
 		method: 'POST',
 		data: data,
 
-	})
-}
+	});
+};
 
 const displayPlayerSchedule = function(player) {
 	return $.ajax({
@@ -29,6 +29,7 @@ const displayPlayerSchedule = function(player) {
 };
 
 const displayAllSchedule = function() {
+  console.log("displayAllSchedule called");
 	return $.ajax({
 		url: app.host + '/match/all',
 		method: 'GET',
@@ -40,4 +41,5 @@ module.exports = {
 	displayLeagueData,
 	displayPlayerSchedule,
 	displayAllSchedule,
+  zipFileUpload,
 };
