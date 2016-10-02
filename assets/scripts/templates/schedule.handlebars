@@ -3,15 +3,15 @@
 	{{#each this}}
 
 	<div class="panel panel-success col-md-2 .lead">
-    	<div class="panel-heading" role="tab" id="heading{{week}}">
+    	<div class="panel-heading" role="tab" id="heading{{player1.divisionName}}">
       		<h4 class="division-name">
-        		<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{week}}" aria-expanded="true" aria-controls="collapse{{week}}">
-					Week {{week}}
+        		<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{player1.divisionName}}" aria-expanded="true" aria-controls="collapse{{player1.divisionName}}">
+					{{player1.divisionName}}
 				</a>
      		 </h4>
     	</div>
 
-		<div id="collapse{{week}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{week}}">
+		<div id="collapse{{player1.divisionName}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{player1.divisionName}}">
 
 			<div id="accordion1" role="tablist" aria-multiselectable="true">
 				{{#each player1}}
