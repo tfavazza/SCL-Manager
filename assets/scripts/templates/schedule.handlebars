@@ -4,7 +4,7 @@
     	<div class="panel-heading" role="tab" id="heading{{@key}}">
       		<h4 class="division-name">
         		<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{@key}}" aria-expanded="true" aria-controls="collapse{{@key}}">
-					Week {{inc @index}}
+					Week {{this.0.week}}
 				</a>
      		 </h4>
     	</div>
@@ -16,7 +16,7 @@
 					<div class="panel panel-warning">
     					<div class="panel-heading" role="tab" id="heading{{this}}">
         					<a data-toggle="collapse" data-parent="#accordion1" href="#collapse{{this}}" aria-expanded="true" aria-controlthiss="collapse{{this}}">
-	 							<span class="flag-icon flag-icon-{{player1country}}"></span> {{player1}} vs <span class="flag-icon flag-icon-{{player2country}}"></span> {{player2}}
+	 						{{league}} League:	<span class="flag-icon flag-icon-{{player1country}}"></span> {{player1}} vs <span class="flag-icon flag-icon-{{player2country}}"></span> {{player2}}
 	 						</a>
 	 					</div>
 

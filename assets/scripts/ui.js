@@ -31,6 +31,8 @@ const organizeFullSchedule = function(rawSchedule) {
 		switch(rawSchedule[i].week) {
 			case 1:
 			fixedSchedule["Week-1"].push({
+				"week": rawSchedule[i].week,
+				"league": rawSchedule[i].league,
 				"player1": rawSchedule[i].player1.name,
 				"player1country": rawSchedule[i].player1.country,
 				"player2": rawSchedule[i].player2.name,
@@ -40,6 +42,8 @@ const organizeFullSchedule = function(rawSchedule) {
 			break;
 			case 2:
 			fixedSchedule["Week-2"].push({
+				"week": rawSchedule[i].week,
+				"league": rawSchedule[i].league,
 				"player1": rawSchedule[i].player1.name,
 				"player1country": rawSchedule[i].player1.country,
 				"player2": rawSchedule[i].player2.name,
@@ -49,6 +53,8 @@ const organizeFullSchedule = function(rawSchedule) {
 			break;
 			case 3: 
 			fixedSchedule["Week-3"].push({
+				"week": rawSchedule[i].week,
+				"league": rawSchedule[i].league,
 				"player1": rawSchedule[i].player1.name,
 				"player1country": rawSchedule[i].player1.country,
 				"player2": rawSchedule[i].player2.name,
@@ -58,6 +64,8 @@ const organizeFullSchedule = function(rawSchedule) {
 			break;		
 			case 4:
 			fixedSchedule["Week-4"].push({
+				"week": rawSchedule[i].week,
+				"league": rawSchedule[i].league,
 				"player1": rawSchedule[i].player1.name,
 				"player1country": rawSchedule[i].player1.country,
 				"player2": rawSchedule[i].player2.name,
@@ -67,6 +75,8 @@ const organizeFullSchedule = function(rawSchedule) {
 			break;
 			case 5:
 			fixedSchedule["Week-5"].push({
+				"week": rawSchedule[i].week,
+				"league": rawSchedule[i].league,
 				"player1": rawSchedule[i].player1.name,
 				"player1country": rawSchedule[i].player1.country,
 				"player2": rawSchedule[i].player2.name,
@@ -76,6 +86,8 @@ const organizeFullSchedule = function(rawSchedule) {
 			break;
 			case 6:
 			fixedSchedule["Week-6"].push({
+				"week": rawSchedule[i].week,
+				"league": rawSchedule[i].league,
 				"player1": rawSchedule[i].player1.name,
 				"player1country": rawSchedule[i].player1.country,
 				"player2": rawSchedule[i].player2.name,
@@ -85,6 +97,8 @@ const organizeFullSchedule = function(rawSchedule) {
 			break;
 			case 7:
 			fixedSchedule["Week-7"].push({
+				"week": rawSchedule[i].week,
+				"league": rawSchedule[i].league,
 				"player1": rawSchedule[i].player1.name,
 				"player1country": rawSchedule[i].player1.country,
 				"player2": rawSchedule[i].player2.name,
@@ -94,6 +108,8 @@ const organizeFullSchedule = function(rawSchedule) {
 			break;
 			case 8:
 			fixedSchedule["Week-8"].push({
+				"week": rawSchedule[i].week,
+				"league": rawSchedule[i].league,
 				"player1": rawSchedule[i].player1.name,
 				"player1country": rawSchedule[i].player1.country,
 				"player2": rawSchedule[i].player2.name,
@@ -103,6 +119,8 @@ const organizeFullSchedule = function(rawSchedule) {
 			break;
 			case 9:
 			fixedSchedule["Week-9"].push({
+				"week": rawSchedule[i].week,
+				"league": rawSchedule[i].league,
 				"player1": rawSchedule[i].player1.name,
 				"player1country": rawSchedule[i].player1.country,
 				"player2": rawSchedule[i].player2.name,
@@ -112,6 +130,8 @@ const organizeFullSchedule = function(rawSchedule) {
 			break;
 			case 10:
 			fixedSchedule["Week-10"].push({
+				"week": rawSchedule[i].week,
+				"league": rawSchedule[i].league,
 				"player1": rawSchedule[i].player1.name,
 				"player1country": rawSchedule[i].player1.country,
 				"player2": rawSchedule[i].player2.name,
