@@ -21,7 +21,6 @@ const onZipFileUpload = function(data) {
 const onDisplayPlayerSchedule = function(event) {
 	event.preventDefault();
 	let player = event.target.id;
-	console.log(player);
 	api.displayPlayerSchedule(player)
 	.done(ui.displayPlayerScheduleSuccess)
 	.fail();
@@ -37,6 +36,13 @@ const onDisplayAllSchedule = function() {
 	.fail(console.error("something went wrong"));
 };
 
+const expandOrCollapseAllTabs = function() {
+	console.log("targeting is okay!");
+	$('.expand-collapse').on('click', function () {
+    $('#accordion .panel-collapse').collapse('toggle');
+});
+}
+
 
 
 const addHandlers = function() {
@@ -44,7 +50,9 @@ $('.division-name').on('click', displayLeagueMembers);
 $('#zip-file').on('click', onZipFileUpload);
 $(document).ready(onDisplayLeagueData);
 $(document).ready(onDisplayAllSchedule);
-$(document).on('click', '.btn', onDisplayPlayerSchedule);
+$(document).on('click', '.btn-info', onDisplayPlayerSchedule);
+$(document).ready(ui.getDate);
+$(document).ready(expandOrCollapseAllTabs)
 
 };
 module.exports = {

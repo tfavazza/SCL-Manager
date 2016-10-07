@@ -21,28 +21,36 @@
       </center>
 
   <ul class="nav nav-tabs">
-  <li class="active"><a data-toggle="tab" href="#standings">League Standings</a></li>
-  <li><a data-toggle="tab" href="#this-week">Games This Week</a></li>
-  <li><a data-toggle="tab" href="#full-schedule">Full Schedule</a></li>
+  <li class="active h3"><a data-toggle="tab" href="#standings">League Standings</a></li>
+  <li><a class= "h3" data-toggle="tab" href="#this-week">Games This Week</a></li>
+  <li><a class= "h3" data-toggle="tab" href="#full-schedule">Full Schedule</a></li>
+  <li><a class= "h3" data-toggle="tab" href="#statistics">Statistics</a></li>
+
 </ul>
 
 <div class="tab-content">
   <div id="standings" class="tab-pane fade in active">
-    <h3>Last Updated 08/08/2016</h3>
+    <h2 id="date"></h2>
+        <div align="right"><button id="league expand-collapse" class="expand-collapse btn btn-primary">Expand/Collapse All</button></div><br>
        <div id="league-data"></div>
   </div>
-  <div id="this-week" class="tab-pane fade">
-    <h3>Games the Week of [Date] to [Date]</h3>
+  <div id="this-week" class="tab-pane fade in this-week">
+    <h2>Games the Week of [Date] to [Date]</h2>
     <p>Wow there's going to to be games here, by League!</p>
   </div>
-  <div id="full-schedule" class="tab-pane fade schedule">
-    <h3>Full Schedule for SCL Season 3</h3>
+  <div id="full-schedule" class="tab-pane fade in schedule">
+    <h2>Full Schedule for SCL Season 3</h2>
+    <div align="right"><button id="schedule expand-collapse" class="expand-collapse btn btn-primary">Expand/Collapse All</button></div><br>
     <div id="schedule"></div>
+  </div>
+  <div id="statistics" class="tab-pane fade in statistics">
+    <h2>Statistics for SCL Season 3</h2>
+    <div id="stats">Stats'll go here! </div>
   </div>
 </div>
 
-<div id="player-modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-  <div class="modal-dialog modal-lg" role="document">
+<div id="player-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
     <div id="player-schedule"></div>
    </div>

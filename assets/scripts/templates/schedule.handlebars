@@ -1,39 +1,39 @@
+
 <div id="accordion" role="tablist" aria-multiselectable="true">
 	{{#each this}}
-	<div class="panel panel-success col-md-6 .lead">
-    	<div class="panel-heading" role="tab" id="heading{{@key}}">
-      		<h4 class="division-name">
-        		<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{@key}}" aria-expanded="true" aria-controls="collapse{{@key}}">
-					Week {{this.0.week}}
-				</a>
-     		 </h4>
-    	</div>
-
-		<div id="collapse{{@key}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{@key}}">
-
-			<div id="accordion1" role="tablist" aria-multiselectable="true">
-				{{#each this}}
-					<div class="panel panel-warning">
-    					<div class="panel-heading" role="tab" id="heading{{this}}">
-        					<a data-toggle="collapse" data-parent="#accordion1" href="#collapse{{this}}" aria-expanded="true" aria-controlthiss="collapse{{this}}">
-	 						{{league}} League:	<span class="flag-icon flag-icon-{{player1country}}"></span> {{player1}} vs <span class="flag-icon flag-icon-{{player2country}}"></span> {{player2}}
-	 						</a>
+		<div class="panel panel-success col-sm-6 col-md-15 .lead">
+			<div class="panel-heading" role="tab" id="heading{{@key}}">
+				<h4 class="division-name">
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{@key}}" aria-expanded="true" aria-controls="collapse{{@key}}">
+						<center>Week {{this.0.week}}</center>
+					</a>
+     		 	</h4>
+     		 </div>
+     		 <div id="collapse{{@key}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{@key}}">
+     		 	<div id="accordion1" role="tablist" aria-multiselectable="true">
+     		 		{{#each this}}
+     		 			<div class="panel panel-warning">
+     		 				<div class="panel-heading" role="tab" id="heading{{this}}">
+        						{{!--<a data-toggle="collapse" data-parent="#accordion1" href="#collapse{{player1}}" aria-expanded="true" aria-controlthiss="collapse{{player1}}">--}}
+        						{{league}}:	<span class="flag-icon flag-icon-{{player1country}}"></span> {{player1}} vs <span class="flag-icon flag-icon-{{player2country}}"></span> {{player2}}
+	 							{{! </a>}}
+	 							<div>Game Status: {{status}}</div>
+	 						</div>
+	 						<div id="collapse{{player1}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{player1}}">
+	 							<div text="center">
+	 								<div class="btn btn-sm btn-info" id="{{player1}}" data-toggle="modal" data-target="#player-modal">Full Schedule</div>
+			 					</div>
+	 							<div> Score: {{status}}</div>
+	 							<div> Wins: {{wins}}</div>
+	 							<div> Losses: {{losses}} </div>
+	 							<div> Draws: {{draws}} </div>
+	 							<div> Games Played: {{matchesPlayed}}</div>
+	 						</div>
 	 					</div>
+					{{/each}}
+				</div>
+			 </div>
+ 		</div>
+	{{/each}}
+</div>	
 
-	 					<div id="collapse{{this}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{this}}">
-	 						<div text="center">
-	 							<div class="btn btn-sm btn-info" id="{{this}}" data-toggle="modal" data-target="#player-modal">Full Schedule
-		 						</div>
-		 					</div>
-	 						<div> Score: {{score}}</div>
-	 						<div> Wins: {{wins}}</div>
-	 						<div> Losses: {{losses}} </div>
-	 						<div> Draws: {{draws}} </div>
-	 						<div> Games Played: {{matchesPlayed}}</div>
-	 				</div>
-	 				</div>
-				{{/each}}
-			</div>
-		 </div>
-  	</div>
-		{{/each}}
