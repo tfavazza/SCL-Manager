@@ -1,9 +1,9 @@
 'use strict';
 
-let clone = require('clone');
+var clone = require('clone');
 
 // clone the webpack config to separate configuration of webpack and dev server
-let webpackConfig = clone(require('./webpack').options);
+var webpackConfig = clone(require('./webpack').options);
 
 // enable live reload without a script tag
 webpackConfig.entry.vendor.unshift('webpack-dev-server/client?http://localhost:8080');

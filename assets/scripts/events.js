@@ -1,6 +1,6 @@
 'use strict';
 
-const app = require('./app.js');
+//const app = require('./app.js');
 const api = require('./api.js');
 const ui = require('./ui.js');
 
@@ -38,10 +38,17 @@ const onDisplayAllSchedule = function() {
 
 const expandOrCollapseAllTabs = function() {
 	console.log("targeting is okay!");
+  let toggling = true;
 	$('.expand-collapse').on('click', function () {
-    $('#accordion .panel-collapse').collapse('toggle');
+    if(toggling) {
+    $('#accordion .panel-collapse').collapse('show');
+    toggling = false;
+  } else {
+    $('#accordion .panel-collapse').collapse('hide');
+    toggling = true;
+  }
 });
-}
+};
 
 
 
@@ -52,7 +59,7 @@ $(document).ready(onDisplayLeagueData);
 $(document).ready(onDisplayAllSchedule);
 $(document).on('click', '.btn-info', onDisplayPlayerSchedule);
 $(document).ready(ui.getDate);
-$(document).ready(expandOrCollapseAllTabs)
+$(document).ready(expandOrCollapseAllTabs);
 
 };
 module.exports = {
