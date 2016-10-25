@@ -11,9 +11,8 @@ const getDate = function() {
     $("#week-date").html(`For the week of ${utc}`);
 };
 
-
 const organizeFullSchedule = function(rawSchedule) {
-    let fixedSchedule = {
+  let  fixedSchedule = {
         "Week-1": [],
         "Week-2": [],
         "Week-3": [],
@@ -24,7 +23,6 @@ const organizeFullSchedule = function(rawSchedule) {
         "Week-8": [],
         "Week-9": [],
         "Week-10": [],
-
     };
 
     const buildAWeek = function(week) {
@@ -80,6 +78,16 @@ const organizeFullSchedule = function(rawSchedule) {
     return fixedSchedule;
 };
 
+const displayThisWeeksSchedule = function() {
+  // let startDate = new Date('2016-10-01');
+  // let today = new Date();
+  // let leagueWeek = Math.abs(today - startDate) / 86400000;
+  // leagueWeek = parseInt(leagueWeek / 7);
+  ////TODO: add fixedSchedule to this scope so's I can futz with it properly.
+  // console.log(fixedSchedule);
+  // $('#weekly-schedule').html(handebarsSchedule(fixedSchedule["Week-" + leagueWeek]));
+};
+
 const displayLeagueDataSuccess = function(data) {
     let league = data.list.leagues;
     $('#league-data').html(handleBarsLeague(league));
@@ -113,4 +121,5 @@ module.exports = {
     zipFileUploadSuccess,
     zipFileUploadFailure,
     getDate,
+    displayThisWeeksSchedule,
 };

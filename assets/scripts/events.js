@@ -50,6 +50,9 @@ const expandOrCollapseAllTabs = function() {
 });
 };
 
+const onDisplayWeeklySchedule = function() {
+  ui.displayThisWeeksSchedule();
+};
 
 
 const addHandlers = function() {
@@ -57,6 +60,7 @@ $('.division-name').on('click', displayLeagueMembers);
 $('#zip-file').on('click', onZipFileUpload);
 $(document).ready(onDisplayLeagueData);
 $(document).ready(onDisplayAllSchedule);
+$(document).ready(onDisplayWeeklySchedule);
 $(document).on('click', '.btn-info', onDisplayPlayerSchedule);
 $(document).ready(ui.getDate);
 $(document).ready(expandOrCollapseAllTabs);
