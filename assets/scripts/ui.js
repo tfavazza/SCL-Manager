@@ -6,8 +6,9 @@ const handlebarsplayer = require('../scripts/templates/player.handlebars');
 const handebarsSchedule = require('../scripts/templates/schedule.handlebars');
 
 const getDate = function() {
-    let utc = new Date().toJSON().slice(0, 10);
-    $("#date").html(`Last updated ${utc}`);
+    let utc = new Date().toJSON().slice(5, 10) + '-' + new Date().toJSON().slice(0,4);
+    $("#date").html(`Last Updated: ${utc}`);
+    $("#week-date").html(`For the week of ${utc}`);
 };
 
 
@@ -24,7 +25,7 @@ const organizeFullSchedule = function(rawSchedule) {
         "Week-9": [],
         "Week-10": [],
 
-    }
+    };
 
     const buildAWeek = function(week) {
         let weekSchedule = {
@@ -35,15 +36,14 @@ const organizeFullSchedule = function(rawSchedule) {
             "player2": rawSchedule[week].player2.name,
             "player2country": rawSchedule[week].player2.country,
             "status": "Not played"
-        }
-        if(rawSchedule[week].status = 1) {
+        };
+        if(rawSchedule[week].status === 1) {
         	weekSchedule.status = "Completed";
 
         }
         return weekSchedule;
     };
     for (let i = 0; i < rawSchedule.length; i++) {
-        console.log(rawSchedule[i]);
         switch (rawSchedule[i].week) {
             case 1:
                 fixedSchedule["Week-1"].push(buildAWeek(i));
@@ -77,8 +77,6 @@ const organizeFullSchedule = function(rawSchedule) {
                 break;
         }
     }
-    console.log(fixedSchedule);
-
     return fixedSchedule;
 };
 
@@ -89,7 +87,12 @@ const displayLeagueDataSuccess = function(data) {
 
 
 const zipFileUploadSuccess = function() {
-    console.log("file sent to the butt!");
+    $('#confirmation').html('<div class="alert alert-info"> <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Success!</strong> Upload successful.</div>');
+};
+
+const zipFileUploadFailure = function() {
+  $('#confirmation').html(
+    '<div class="alert alert-info"> <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Oh no!</strong> Upload failed.</div>');
 };
 
 const displayPlayerScheduleSuccess = function(data) {
@@ -108,5 +111,6 @@ module.exports = {
     displayPlayerScheduleSuccess,
     showAllScheduleSuccess,
     zipFileUploadSuccess,
+    zipFileUploadFailure,
     getDate,
 };

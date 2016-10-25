@@ -2,7 +2,7 @@
 
 const app = require('./app.js');
 
-const ui = require('./ui.js');
+//const ui = require('./ui.js');
 
 
 const displayLeagueData = function() {
@@ -17,7 +17,7 @@ const zipFileUpload = function(data) {
 		url: app.host + '/parse/',
 		method: 'POST',
 		data: data,
-
+    dataType: 'json',
 	});
 };
 

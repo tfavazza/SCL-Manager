@@ -14,7 +14,7 @@ const onDisplayLeagueData = function(data) {
 const onZipFileUpload = function(data) {
 	api.zipFileUpload(data)
 	.done(ui.zipFileUploadSuccess)
-	.fail(console.log("JK no butt"));
+	.fail(ui.zipFileUploadFailure);
 
 };
 
