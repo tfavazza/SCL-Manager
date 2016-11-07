@@ -2,7 +2,7 @@
 <html>
     <head>
       <title>SCL Manager</title>
-
+      <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
       <script src="vendor.bundle.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
       <link type="text/css" rel="stylesheet" href="..\bower_components\flag-icon-css\css\flag-icon.min.css"/>
@@ -11,7 +11,8 @@
 
     </head>
     <body class="container-fluid">
-      <center><h1>SCL Manager</h1>
+      <div align="right"><button id="wodar-button" class="btn btn-sm btn-danger">Wodar's Button for Wodar</button></div>
+      <center><h1><b>SCL Manager</b></h1>
          <div id="upload-file"><input type="file" id="file" name="files[]" />
            <output id="list"></output>
            <button id="zip-file" class="btn btn-primary">Upload .zip file!
@@ -21,10 +22,10 @@
       </center>
 
   <ul class="nav nav-tabs">
-  <li class="active h3"><a data-toggle="tab" href="#standings">Player Standings</a></li>
+  <li><a class="active h3" data-toggle="tab" href="#standings">Player Standings</a></li>
   <li><a class= "h3" data-toggle="tab" href="#this-week">Games This Week</a></li>
   <li><a class= "h3" data-toggle="tab" href="#full-schedule">Full Schedule</a></li>
-  <li><a class= "h3" data-toggle="tab" href="#statistics">Statistics</a></li>
+<!--   <li><a class= "h3" data-toggle="tab" href="#statistics">Statistics</a></li> -->
 
 </ul>
 
@@ -44,10 +45,10 @@
     <div align="right"><button id="schedule expand-collapse" class="expand-collapse btn btn-primary">Expand/Collapse All</button></div><br>
     <div id="schedule"></div>
   </div>
-  <div id="statistics" class="tab-pane fade in statistics">
+<!--   <div id="statistics" class="tab-pane fade in statistics">
     <h2>Statistics for SCL Season 3</h2>
     <div id="stats">Stats'll go here! </div>
-  </div>
+  </div> -->
 </div>
 
 <div id="player-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">

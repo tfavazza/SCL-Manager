@@ -35,5 +35,16 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 }
 
 body {
-	background-color: #D3D3D3;
+	background-color: #111;
+    color: #EEE;
+    font-family: 'PT Sans Narrow', sans-serif;
+
+}
+
+#wodar-button {
+    background-color: #222;
+    color: grey;
+    outline: none;
+    outline-color: none;
+    border: none;
 }
