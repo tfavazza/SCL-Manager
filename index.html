@@ -13,10 +13,12 @@
     <body class="container-fluid">
       <div align="right"><button id="wodar-button" class="btn btn-sm btn-danger">Wodar's Button (for Wodar)</button></div>
       <center><h1><b>SCL Manager</b></h1>
-         <div id="upload-file"><input type="file" id="file" name="files[]" />
-           <output id="list"></output>
-           <button id="zip-file" class="btn btn-primary">Upload .zip file!
-           </button>
+         <div id="upload-file">
+          <form enctype="multipart/form-data" id="zip-form">
+            <input type="file" name="file" />
+            <output id="list"></output>
+            <input type="submit" id="zip-file" class="btn btn-primary" value="Upload .zip file!" />
+          </form>
          </div>
         <div id="confirmation"></div>
       </center>

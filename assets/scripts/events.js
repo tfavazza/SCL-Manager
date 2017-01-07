@@ -5,17 +5,20 @@ const api = require('./api.js');
 const ui = require('./ui.js');
 
 
+
 const onDisplayLeagueData = function(data) {
 	api.displayLeagueData(data)
 	.done(ui.displayLeagueDataSuccess)
 	.fail(console.error());
 };
 
-const onZipFileUpload = function(data) {
-	api.zipFileUpload(data)
+const onZipFileUpload = function(e) {
+	e.preventDefault();
+	let formData = new FormData();
+	formData.append('file', $('input[type=file]')[0].files[0])
+	api.zipFileUpload(formData)
 	.done(ui.zipFileUploadSuccess)
 	.fail(ui.zipFileUploadFailure);
-
 };
 
 const onDisplayPlayerSchedule = function(event) {
