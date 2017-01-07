@@ -1,6 +1,6 @@
 {{#each this}} 
 <blockquote>
-<div>Week {{this.week}}: <span class="flag-icon flag-icon-{{this.player1.country}}"></span> <b>{{this.player1.name}}</b> against <span class="flag-icon flag-icon-{{this.player2.country}}"></span> <b>{{this.player2.name}}</b></div>
+<div class="alt-color">Week {{this.week}}: <span class="flag-icon flag-icon-{{this.player1.country}}"></span> <b>{{this.player1.name}}</b> against <span class="flag-icon flag-icon-{{this.player2.country}}"></span> <b>{{this.player2.name}}</b></div>
 </blockquote>
-<p>Result: </p>
+<p class="alt-color">Summary: {{this.summary}}</p>
 {{/each}}
