@@ -1,13 +1,22 @@
-<div id="accordion1" role="tablist" aria-multiselectable="true" >
-				{{#each this}}
-				<div class="panel panel-warning col-md-6">
-					<div class="panel-heading" role="tab" id="heading{{this}}">
-						{{!--<a data-toggle="collapse" data-parent="#accordion1" href="#collapse{{player1}}" aria-expanded="true" aria-controlthiss="collapse{{player1}}">--}}
-						{{league}}:	<span class="flag-icon flag-icon-{{player1country}}"></span> {{player1}} vs <span class="flag-icon flag-icon-{{player2country}}"></span> {{player2}}
-						{{! </a>}}
-						<div>Game Status: {{status}}</div>
-						<div>Summary: {{summary}}</div>
-					</div>
+{{#each this}}
+	<div class="h2 panel {{#if status}}panel-success {{else}} panel-warning{{/if}} col-md-4">
+		<div class="panel-heading" role="tab" id="heading">
+			{{league}}:
+			<div>
+				<span class="flag-icon flag-icon-{{player1.country}}"></span> {{player1.name}} vs 
+				<span class="flag-icon flag-icon-{{player2.country}}"></span> {{player2.name}}
+				<div>
+					Game Status: 
+					{{#if status}} 
+						Completed 
+					{{else}}
+						Not completed
+					{{/if}}
 				</div>
-				{{/each}}
+			</div>	
+			<div>
+				Summary: {{summary}}
 			</div>
+		</div>
+	</div>
+{{/each}}
