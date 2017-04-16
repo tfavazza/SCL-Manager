@@ -1,28 +1,29 @@
 
 <div id="accordion" role="tablist" aria-multiselectable="true" class="testing-css">
 	{{#each this}}
-		<div class="panel panel-success col-sm-12 col-md-12 .lead">
-			<div class="panel-heading" role="tab" id="heading{{@key}}">
-				<h4 class="division-name">
-					<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{@key}}" aria-expanded="true" aria-controls="collapse{{@key}}">
-						<center class="h3">WEEK {{this.0.week}}</center>
-					</a>
-     		 	</h4>
-     		 </div>
-     		 <div id="collapse{{@key}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{@key}}">
-     		 	<div id="accordion1" role="tablist" aria-multiselectable="true" >
-     		 		{{#each this}}
-     		 			<div class="panel panel-warning col-md-6">
-     		 				<div class="panel-heading" role="tab" id="heading{{this}}">
-        						{{!--<a data-toggle="collapse" data-parent="#accordion1" href="#collapse{{player1}}" aria-expanded="true" aria-controlthiss="collapse{{player1}}">--}}
-        						{{league}}:	<span class="flag-icon flag-icon-{{player1country}}"></span> {{player1}} vs <span class="flag-icon flag-icon-{{player2country}}"></span> {{player2}}
-	 							{{! </a>}}
-	 							<div>Game Status: {{status}}</div>
-	 						</div>
-	 					</div>
-					{{/each}}
+	<div class="panel panel-success col-sm-12 col-md-12 .lead">
+		<div class="panel-heading" role="tab" id="heading{{@key}}">
+			<h4 class="division-name">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{@key}}" aria-expanded="true" aria-controls="collapse{{@key}}">
+					<center class="h2">WEEK {{this.0.week}}</center>
+				</a>
+			</h4>
+		</div>
+		<div id="collapse{{@key}}" class="panel-collapse collapse h4" role="tabpanel" aria-labelledby="heading{{@key}}">
+			<div id="accordion1" role="tablist" aria-multiselectable="true" >
+				{{#each this}}
+				<div class="panel panel-warning col-md-6">
+					<div class="panel-heading" role="tab" id="heading{{this}}">
+						{{!--<a data-toggle="collapse" data-parent="#accordion1" href="#collapse{{player1}}" aria-expanded="true" aria-controlthiss="collapse{{player1}}">--}}
+						{{league}}:	<span class="flag-icon flag-icon-{{player1country}}"></span> {{player1}} vs <span class="flag-icon flag-icon-{{player2country}}"></span> {{player2}}
+						{{! </a>}}
+						<div>Game Status: {{status}}</div>
+						<div>Summary: {{summary}}</div>
+					</div>
 				</div>
-			 </div>
- 		</div>
+				{{/each}}
+			</div>
+		</div>
+	</div>
 	{{/each}}
 </div>

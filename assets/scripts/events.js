@@ -13,6 +13,7 @@ const onDisplayLeagueData = function(data) {
 };
 
 const onZipFileUpload = function(e) {
+	console.log('click!');
 	e.preventDefault();
 	let formData = new FormData();
 	formData.append('file', $('input[type=file]')[0].files[0])
@@ -36,11 +37,10 @@ const displayLeagueMembers = function() {
 const onDisplayAllSchedule = function() {
 	api.displayAllSchedule()
 	.done(ui.showAllScheduleSuccess)
-	.fail(console.error("something went wrong"));
+	.fail(function(e) {console.log(e)});
 };
 
 const expandOrCollapseAllTabs = function() {
-	console.log("targeting is okay!");
   let toggling = true;
 	$('.expand-collapse').on('click', function () {
     if(toggling) {
@@ -54,8 +54,22 @@ const expandOrCollapseAllTabs = function() {
 };
 
 const onDisplayWeeklySchedule = function() {
-  ui.displayThisWeeksSchedule();
+  let startDate = new Date('2017-04-15');
+  let today = new Date();
+  let leagueWeek = Math.abs(today - startDate) / 86400000;
+  leagueWeek = parseInt(leagueWeek / 7 + 1);
+  console.log(leagueWeek);
+  api.displayAWeek(leagueWeek)
+  .done(ui.displayThisWeeksSchedule).fail(console.log('whoops!'));
 };
+
+//TODO HOOK THE REST OF THIS UP
+// const onDisplayAWeek = function(e) {
+// 	e.preventDefault();
+// 	console.log(e);
+// 	let weekNumber = e.weekNumber
+// 	api.onDisplayAWeek(weekNumber);
+// };
 
 
 const addHandlers = function() {

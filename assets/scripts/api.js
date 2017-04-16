@@ -26,22 +26,28 @@ const zipFileUpload = function(data) {
 const displayPlayerSchedule = function(player) {
 	return $.ajax({
 		url: app.host + '/player/' + player + '/matches',
-			method: 'GET',
+		method: 'GET',
 	});
 };
 
 const displayAllSchedule = function() {
-  console.log("displayAllSchedule called");
 	return $.ajax({
 		url: app.host + '/match/all',
 		method: 'GET',
 	});
+};
 
+const displayAWeek = function(weekNumber) {
+	return $.ajax({
+		url: app.host + '/match/week/' + weekNumber,
+		method: 'GET'
+	});
 };
 
 module.exports = {
 	displayLeagueData,
 	displayPlayerSchedule,
 	displayAllSchedule,
-  zipFileUpload,
+  	zipFileUpload,
+  	displayAWeek,
 };

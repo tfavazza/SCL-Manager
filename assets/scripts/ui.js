@@ -4,6 +4,7 @@ const handleBarsLeague = require('../scripts/templates/leagues.handlebars');
 const events = require('./events.js');
 const handlebarsplayer = require('../scripts/templates/player.handlebars');
 const handebarsSchedule = require('../scripts/templates/schedule.handlebars');
+const handlebarsWeek = require('../scripts/templates/week.handlebars')
 
 const getDate = function() {
     let utc = new Date().toJSON().slice(5, 10) + '-' + new Date().toJSON().slice(0,4);
@@ -12,7 +13,7 @@ const getDate = function() {
 };
 
 const organizeFullSchedule = function(rawSchedule) {
-  let  fixedSchedule = {
+    let  fixedSchedule = {
         "Week-1": [],
         "Week-2": [],
         "Week-3": [],
@@ -24,7 +25,6 @@ const organizeFullSchedule = function(rawSchedule) {
         "Week-9": [],
         "Week-10": [],
     };
-
     const buildAWeek = function(week) {
         let weekSchedule = {
             "week": rawSchedule[week].week,
@@ -33,11 +33,11 @@ const organizeFullSchedule = function(rawSchedule) {
             "player1country": rawSchedule[week].player1.country,
             "player2": rawSchedule[week].player2.name,
             "player2country": rawSchedule[week].player2.country,
-            "status": "Not played"
+            "status": "Not played",
+            "summary": "test"
         };
         if(rawSchedule[week].status === 1) {
         	weekSchedule.status = "Completed";
-
         }
         return weekSchedule;
     };
@@ -78,14 +78,9 @@ const organizeFullSchedule = function(rawSchedule) {
     return fixedSchedule;
 };
 
-const displayThisWeeksSchedule = function() {
-  // let startDate = new Date('2016-10-01');
-  // let today = new Date();
-  // let leagueWeek = Math.abs(today - startDate) / 86400000;
-  // leagueWeek = parseInt(leagueWeek / 7);
-  ////TODO: add fixedSchedule to this scope so's I can futz with it properly.
-  // console.log(fixedSchedule);
-  // $('#weekly-schedule').html(handebarsSchedule(fixedSchedule["Week-" + leagueWeek]));
+const displayThisWeeksSchedule = function(fixedSchedule) {
+    console.log(fixedSchedule);
+  $('#weekly-schedule').html(handlebarsWeek(fixedSchedule));
 };
 
 const displayLeagueDataSuccess = function(data) {
@@ -94,7 +89,8 @@ const displayLeagueDataSuccess = function(data) {
 };
 
 
-const zipFileUploadSuccess = function() {
+const zipFileUploadSuccess = function(response) {
+    console.log(response);
     $('#confirmation').html('<div class="alert alert-info"> <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Success!</strong> Upload successful.</div>');
 };
 
