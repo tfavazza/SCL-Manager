@@ -106,9 +106,9 @@ sftp-config.json
 
 ### Bower ###
 # bower_components
-.bower-cache
-.bower-registry
-.bower-tmp
+# .bower-cache
+# .bower-registry
+# .bower-tmp
 
 
 ### OSX ###
