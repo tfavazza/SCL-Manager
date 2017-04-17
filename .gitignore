@@ -2,8 +2,6 @@ tmp
 dist
 specs.js
 _SpecRunner.html
-*.woff2
-*.woff
 *.svg
 *.ttf
 *.eot
