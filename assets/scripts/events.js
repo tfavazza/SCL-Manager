@@ -3,14 +3,26 @@
 //const app = require('./app.js');
 const api = require('./api.js');
 const ui = require('./ui.js');
-
-
+let toggling = true;
+let wodarView = false;
 
 const onDisplayLeagueData = function(data) {
 	api.displayLeagueData(data)
 	.done(ui.displayLeagueDataSuccess)
 	.fail(console.error());
 };
+
+const onWodar = function(e) {
+	console.log('WODAR!');
+	e.preventDefault();
+	if (wodarView) {
+		$('.container-fluid').css('background-color', '#00cc00')
+		wodarView = !wodarView
+	} else {
+		$('.container-fluid').css('background-color', '#336699')
+		wodarView = !wodarView
+	}
+}
 
 const onZipFileUpload = function(e) {
 	console.log('click!');
@@ -41,7 +53,6 @@ const onDisplayAllSchedule = function() {
 };
 
 const expandOrCollapseAllTabs = function() {
-  let toggling = true;
 	$('.expand-collapse').on('click', function () {
     if(toggling) {
     $('#accordion .panel-collapse').collapse('show');
@@ -63,15 +74,6 @@ const onDisplayWeeklySchedule = function() {
   .done(ui.displayThisWeeksSchedule).fail(console.log('whoops!'));
 };
 
-//TODO HOOK THE REST OF THIS UP
-// const onDisplayAWeek = function(e) {
-// 	e.preventDefault();
-// 	console.log(e);
-// 	let weekNumber = e.weekNumber
-// 	api.onDisplayAWeek(weekNumber);
-// };
-
-
 const addHandlers = function() {
 $('.division-name').on('click', displayLeagueMembers);
 $('#zip-file').on('click', onZipFileUpload);
@@ -81,7 +83,7 @@ $(document).ready(onDisplayWeeklySchedule);
 $(document).on('click', '.btn-info', onDisplayPlayerSchedule);
 $(document).ready(ui.getDate);
 $(document).ready(expandOrCollapseAllTabs);
-
+$('#wodar-button').on('click', onWodar);
 };
 module.exports = {
 	addHandlers,

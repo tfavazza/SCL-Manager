@@ -1,7 +1,7 @@
 <div id="accordion" role="tablist" aria-multiselectable="true">
 	{{#each this}}
-	<div class="panel panel-success col-md-12 col-sm-12 .lead">
-		<a class="panel-success" data-toggle="collapse" data-parent="#accordion" href="#collapse{{name}}" aria-expanded="true" aria-controls="collapse{{name}}">
+	<div class="panel panel-primary col-md-12 col-sm-12 .lead">
+		<a class="panel-primary" data-toggle="collapse" data-parent="#accordion" href="#collapse{{name}}" aria-expanded="true" aria-controls="collapse{{name}}">
 			<div class="panel-heading" role="tab" id="heading{{name}}">
 				<h3 class="division-name text-center">
 					{{name}}	
@@ -9,7 +9,6 @@
 			</div>				
 		</a>
 		<div id="collapse{{name}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{name}}">		
-			<div id="accordion1" role="tablist" aria-multiselectable="true" class="panel panel-warning">
 				{{# each players}}
 				<div class="panel panel-warning">
 					<div class="panel-heading h4 " role="tab" id="heading{{name}}">
@@ -20,7 +19,7 @@
 					<div id="collapse{{name}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{name}}">
 						<div text="center">
 							<div class="btn btn-lg btn-info" id="{{name}}" data-toggle="modal" data-target="#player-modal">
-								{{name}} Schedule and Summary
+								{{name}} schedule
 							</div>
 						</div>
 						<div class="alt-color"> Score: {{score}}</div>
@@ -31,7 +30,6 @@
 					</div>
 				</div> 
 				{{/each}}
-			</div>
 		</div>
 	</div>
 	{{/each}}

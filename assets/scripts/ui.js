@@ -13,6 +13,7 @@ const getDate = function() {
 };
 
 const organizeFullSchedule = function(rawSchedule) {
+    console.log(rawSchedule);
     let  fixedSchedule = {
         "Week-1": [],
         "Week-2": [],
@@ -34,7 +35,7 @@ const organizeFullSchedule = function(rawSchedule) {
             "player2": rawSchedule[week].player2.name,
             "player2country": rawSchedule[week].player2.country,
             "status": "Not played",
-            "summary": "test"
+            "completedFlag": rawSchedule[week].status 
         };
         if(rawSchedule[week].status === 1) {
         	weekSchedule.status = "Completed";
@@ -78,9 +79,8 @@ const organizeFullSchedule = function(rawSchedule) {
     return fixedSchedule;
 };
 
-const displayThisWeeksSchedule = function(fixedSchedule) {
-    console.log(fixedSchedule);
-  $('#weekly-schedule').html(handlebarsWeek(fixedSchedule));
+const displayThisWeeksSchedule = function(weeklySchedule) {
+  $('#weekly-schedule').html(handlebarsWeek(weeklySchedule));
 };
 
 const displayLeagueDataSuccess = function(data) {
