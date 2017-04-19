@@ -1,36 +1,35 @@
 <div id="accordion" role="tablist" aria-multiselectable="true">
 	{{#each this}}
 	<div class="panel panel-primary col-md-12 col-sm-12 .lead">
-		<a class="panel-primary" data-toggle="collapse" data-parent="#accordion" href="#collapse{{name}}" aria-expanded="true" aria-controls="collapse{{name}}">
+		<span style="cursor: pointer" class="panel-primary" data-toggle="collapse" data-parent="#accordion" href="#collapse{{name}}" aria-expanded="true" aria-controls="collapse{{name}}">
 			<div class="panel-heading" role="tab" id="heading{{name}}">
-				<h3 class="division-name text-center">
-					{{name}}	
-				</h3>
+				<h2 class="division-name text-center">
+					{{name}}
+				</h2>
 			</div>				
-		</a>
+		</span>
 		<div id="collapse{{name}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{name}}">		
 				{{# each players}}
 				<div class="panel panel-warning">
-					<div class="panel-heading h4 " role="tab" id="heading{{name}}">
+					<div class="panel-heading h3" role="tab" id="heading{{name}}">
 						<a data-toggle="collapse" data-parent="#accordion1" href="#collapse{{name}}" aria-expanded="true" aria-controls="collapse{{name}}">
-							<span class="flag-icon flag-icon-{{country}}"></span> {{name}}
-						</a>
+							<span class="flag-icon flag-icon-{{country}}"></span> {{name}} score {{score}} wins {{wins}} losses {{losses}} <span class="btn btn-small">schedule</span>						</a>
 					</div>
-					<div id="collapse{{name}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{name}}">
+					<center><div id="collapse{{name}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{name}}">
 						<div text="center">
 							<div class="btn btn-lg btn-info" id="{{name}}" data-toggle="modal" data-target="#player-modal">
 								{{name}} schedule
 							</div>
 						</div>
-						<div class="alt-color"> Score: {{score}}</div>
-						<div class="alt-color"> Wins: {{wins}}</div>
-						<div class="alt-color"> Losses: {{losses}} </div>
-						<div class="alt-color"> Draws: {{draws}} </div>
-						<div class="alt-color"> Games Played: {{matchesPlayed}}</div> 
-					</div>
+						<div class="alt-color h3"> Score: {{score}} Games Played: {{matchesPlayed}}</div> 
+						<div class="alt-color h3"> Wins: {{wins}} Losses: {{losses}} </div>
+						<div class="alt-color h3"> Draws: {{draws}} </div>
+
+					</div></center>
 				</div> 
 				{{/each}}
 		</div>
 	</div>
+</a>
 	{{/each}}
 </div>

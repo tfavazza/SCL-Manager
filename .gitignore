@@ -2,7 +2,7 @@ tmp
 dist
 specs.js
 _SpecRunner.html
-*.svg
+# *.svg
 *.ttf
 *.eot
 

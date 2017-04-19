@@ -35,7 +35,8 @@ const organizeFullSchedule = function(rawSchedule) {
             "player2": rawSchedule[week].player2.name,
             "player2country": rawSchedule[week].player2.country,
             "status": "Not played",
-            "completedFlag": rawSchedule[week].status 
+            "completedFlag": rawSchedule[week].status, 
+            "matchUrl": rawSchedule[week].matchUrl
         };
         if(rawSchedule[week].status === 1) {
         	weekSchedule.status = "Completed";

@@ -5,7 +5,7 @@
 		<div class="panel-heading" role="tab" id="heading{{@key}}">
 			<h4 class="division-name">
 				<span style="cursor: pointer" data-toggle="collapse" data-parent="#accordion" href="#collapse{{@key}}" aria-expanded="true" aria-controls="collapse{{@key}}">
-					<center class="h2 alt-color">WEEK {{this.0.week}} </center>
+					<center class="h2 alt-color">Week {{this.0.week}} </center>
 				</span>
 			</h4>
 		</div>
@@ -13,10 +13,11 @@
 			<div id="accordion1" role="tablist" aria-multiselectable="true" >
 				{{#each this}}
 				<ul class="list-group">
-				<li class="list-group-item {{#if completedFlag}} list-group-item-success {{else}} list-group-item-warning {{/if}} col-md-6">
-					<div class="heading" role="tab" id="heading{{this}}">
-						{{league}}:	<span class="flag-icon flag-icon-{{player1country}}"></span> {{player1}} vs <span class="flag-icon flag-icon-{{player2country}}"></span> {{player2}}
-						<div>Game Status: {{status}}</div>
+				<li class="list-group-item {{#if completedFlag}} list-group-item-success {{else}} list-group-item-warning {{/if}} col-md-4">
+					<div class="heading h5" role="tab" id="heading{{this}}">
+						{{league}}:	<b><span class="flag-icon flag-icon-{{player1country}}"></span> {{player1}}</b> vs <b><span class="flag-icon flag-icon-{{player2country}}"></span> {{player2}}</b>
+						<div>Game Status: {{#if matchUrl}}Complete (<a href="{{matchUrl}}">replays</a>) {{else}} {{status}} {{/if}}</div>
+						<div></div>
 					</div>
 				</li>
 			</ul>

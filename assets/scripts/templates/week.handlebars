@@ -1,5 +1,5 @@
 {{#each this}}
-	<div class="h2 panel {{#if status}}panel-success {{else}} panel-warning{{/if}} col-md-12">
+	<div class="h3 panel {{#if status}}panel-success {{else}} panel-warning{{/if}} col-md-12">
 		<div class="panel-heading" role="tab" id="heading">
 			{{league}}:
 			<div>
@@ -7,14 +7,17 @@
 				<span class="flag-icon flag-icon-{{player2.country}}"></span> {{player2.name}}
 				<div>
 					Game Status:
-					{{#if status}} 
-						Completed 
+					{{#if status}}
+						Completed (<a href="{{matchUrl}}">replays</a>)
 					{{else}}
 						Not completed
 					{{/if}}
 				</div>
-			</div>	
-			<div>{{summary}}</div>
+			</div>
+			<br>
+			{{#each games}}
+			<div>Game {{@key}} Spy {{spy}}. Sniper {{sniper}}. Level {{level}} {{gameType}}. Result: <b>{{result}}</b></div>
+			{{/each}}
 		</div>
 	</div>
 {{/each}}

@@ -7,12 +7,12 @@
   <script src="vendor.bundle.js" type="text/javascript" charset="utf-8" defer></script>
   <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
   <link href="./flag-icon-css/css/flag-icon.css" rel="stylesheet">
-  <!-- <link type="text/css" rel="stylesheet" href="..\bower_components\flag-icon-css\css\flag-icon.min.css"/>   -->
 </head>
 <body class="container-fluid">
   <div align="right"><button id="wodar-button" class="btn btn-sm btn-danger">Wodar's Button (for Wodar)</button></div>
   <center><h1><b>SCL Manager</b></h1>
    <div id="upload-file">
+    <h3>Upload your replay zip files here!</h3>
     <form enctype="multipart/form-data" id="zip-form">
       <input type="file" name="file" />
       <output id="list"></output>
@@ -20,7 +20,6 @@
     </form>
   </div>
   <div id="confirmation"></div>
-  <span class="flag-icon flag-icon-us"></span>
 </center>
 
 <ul class="nav nav-tabs">
@@ -33,7 +32,7 @@
 <div class="tab-content container">
   <div id="standings" class="tab-pane fade in active">
     <h3>Players ordered by current score, click players for details</h3>
-    <h4 id="date"></h4>
+    <!-- <h4 id="date"></h4> -->
     <div align="right"><button id="league expand-collapse" class="expand-collapse btn btn-primary">Expand/Collapse All</button></div><br>
     <div id="league-data"></div>
   </div>
