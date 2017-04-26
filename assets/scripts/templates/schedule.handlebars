@@ -13,8 +13,8 @@
 			<div id="accordion1" role="tablist" aria-multiselectable="true" >
 				{{#each this}}
 				<ul class="list-group">
-				<li class="list-group-item {{#if completedFlag}} list-group-item-success {{else}} list-group-item-warning {{/if}} col-md-4">
-					<div class="heading h5" role="tab" id="heading{{this}}">
+				<li class="list-group-item {{#if completedFlag}} list-group-item-success {{else}} alt-color {{/if}} col-md-4">
+					<div class="heading h4" role="tab" id="heading{{this}}">
 						{{league}}:	<b><span class="flag-icon flag-icon-{{player1country}}"></span> {{player1}}</b> vs <b><span class="flag-icon flag-icon-{{player2country}}"></span> {{player2}}</b>
 						<div>Game Status: {{#if matchUrl}}Complete (<a href="{{matchUrl}}">replays</a>) {{else}} {{status}} {{/if}}</div>
 						<div></div>

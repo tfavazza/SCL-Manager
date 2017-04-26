@@ -114,6 +114,10 @@ const showAllScheduleSuccess = function(data) {
     $('#schedule').html(handebarsSchedule(schedule));
 };
 
+const displayPlayoffGames = function() {
+    $('#results').html('Coming soon!');
+}
+
 module.exports = {
     displayLeagueDataSuccess,
     displayPlayerScheduleSuccess,
@@ -122,4 +126,5 @@ module.exports = {
     zipFileUploadFailure,
     getDate,
     displayThisWeeksSchedule,
+    displayPlayoffGames
 };

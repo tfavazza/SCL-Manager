@@ -9,27 +9,18 @@
 			</div>				
 		</span>
 		<div id="collapse{{name}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{name}}">		
-				{{# each players}}
-				<div class="panel panel-warning">
-					<div class="panel-heading h3" role="tab" id="heading{{name}}">
-						<a data-toggle="collapse" data-parent="#accordion1" href="#collapse{{name}}" aria-expanded="true" aria-controls="collapse{{name}}">
-							<span class="flag-icon flag-icon-{{country}}"></span> {{name}} score {{score}} wins {{wins}} losses {{losses}} <span class="btn btn-small">schedule</span>						</a>
-					</div>
-					<center><div id="collapse{{name}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{name}}">
-						<div text="center">
-							<div class="btn btn-lg btn-info" id="{{name}}" data-toggle="modal" data-target="#player-modal">
-								{{name}} schedule
-							</div>
-						</div>
-						<div class="alt-color h3"> Score: {{score}} Games Played: {{matchesPlayed}}</div> 
-						<div class="alt-color h3"> Wins: {{wins}} Losses: {{losses}} </div>
-						<div class="alt-color h3"> Draws: {{draws}} </div>
-
-					</div></center>
-				</div> 
-				{{/each}}
+			{{# each players}}
+			<div class="panel-heading h3 alt-color" role="tab" id="heading{{name}}">
+				<span class="col-md-2 flag-icon flag-icon-{{country}}"></span>
+				<div class="col-md-2">{{name}}</div>
+				<div class="col-md-2">Score {{score}}</div>
+				<div class="col-md-2">Wins {{wins}}</div>
+				<div class="col-md-2">Losses {{losses}}</div>
+				<button class="btn btn-small btn-info col-md-2" data-target="#player-modal" id="{{name}}" data-toggle="modal">Player Schedule</button>
+				<br>
+			</div>
+			{{/each}}
 		</div>
 	</div>
-</a>
 	{{/each}}
 </div>
