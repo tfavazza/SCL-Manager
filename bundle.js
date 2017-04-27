@@ -203,8 +203,7 @@ webpackJsonp([0],[
 	'use strict';
 
 	var app = {
-	  // host: 'https://scl.spypartyfans.com/api',
-	  host: 'http://benremoteaccess.com:41515/api'
+	  host: 'https://scl.spypartyfans.com/api'
 	};
 
 	module.exports = app;
