@@ -130,6 +130,7 @@ webpackJsonp([0],[
 		$(document).ready(expandOrCollapseAllTabs);
 		$('#wodar-button').on('click', onWodar);
 	};
+	$(document).ready(ui.displayPlayoffGames);
 	module.exports = {
 		addHandlers: addHandlers
 	};
@@ -179,6 +180,7 @@ webpackJsonp([0],[
 	};
 
 	var displayAWeek = function displayAWeek(weekNumber) {
+		console.log(weekNumber);
 		return $.ajax({
 			url: app.host + '/match/week/' + weekNumber,
 			method: 'GET'
@@ -201,8 +203,8 @@ webpackJsonp([0],[
 	'use strict';
 
 	var app = {
-	  // host: 'http://ec2-35-167-62-83.us-west-2.compute.amazonaws.com',
-	  host: 'http://benremoteaccess.com:41515'
+	  // host: 'https://scl.spypartyfans.com/api',
+	  host: 'http://benremoteaccess.com:41515/api'
 	};
 
 	module.exports = app;
@@ -248,7 +250,8 @@ webpackJsonp([0],[
 	            "player2": rawSchedule[week].player2.name,
 	            "player2country": rawSchedule[week].player2.country,
 	            "status": "Not played",
-	            "completedFlag": rawSchedule[week].status
+	            "completedFlag": rawSchedule[week].status,
+	            "matchUrl": rawSchedule[week].matchUrl
 	        };
 	        if (rawSchedule[week].status === 1) {
 	            weekSchedule.status = "Completed";
@@ -324,6 +327,10 @@ webpackJsonp([0],[
 	    $('#schedule').html(handebarsSchedule(schedule));
 	};
 
+	var displayPlayoffGames = function displayPlayoffGames() {
+	    $('#results').html('Coming soon!');
+	};
+
 	module.exports = {
 	    displayLeagueDataSuccess: displayLeagueDataSuccess,
 	    displayPlayerScheduleSuccess: displayPlayerScheduleSuccess,
@@ -331,7 +338,8 @@ webpackJsonp([0],[
 	    zipFileUploadSuccess: zipFileUploadSuccess,
 	    zipFileUploadFailure: zipFileUploadFailure,
 	    getDate: getDate,
-	    displayThisWeeksSchedule: displayThisWeeksSchedule
+	    displayThisWeeksSchedule: displayThisWeeksSchedule,
+	    displayPlayoffGames: displayPlayoffGames
 	};
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
@@ -344,15 +352,15 @@ webpackJsonp([0],[
 	module.exports = (Handlebars["default"] || Handlebars).template({"1":function(container,depth0,helpers,partials,data) {
 	    var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
-	  return "	<div class=\"panel panel-primary col-md-12 col-sm-12 .lead\">\n		<a class=\"panel-primary\" data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse"
+	  return "	<div class=\"panel panel-primary col-md-12 col-sm-12 .lead\">\n		<span style=\"cursor: pointer\" class=\"panel-primary\" data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse"
 	    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
 	    + "\" aria-expanded=\"true\" aria-controls=\"collapse"
 	    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
 	    + "\">\n			<div class=\"panel-heading\" role=\"tab\" id=\"heading"
 	    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-	    + "\">\n				<h3 class=\"division-name text-center\">\n					"
+	    + "\">\n				<h2 class=\"division-name text-center\">\n					"
 	    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-	    + "	\n				</h3>\n			</div>				\n		</a>\n		<div id=\"collapse"
+	    + "\n				</h2>\n			</div>				\n		</span>\n		<div id=\"collapse"
 	    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
 	    + "\" class=\"panel-collapse collapse\" role=\"tabpanel\" aria-labelledby=\"heading"
 	    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
@@ -362,35 +370,21 @@ webpackJsonp([0],[
 	},"2":function(container,depth0,helpers,partials,data) {
 	    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
-	  return "				<div class=\"panel panel-warning\">\n					<div class=\"panel-heading h4 \" role=\"tab\" id=\"heading"
+	  return "			<div class=\"panel-heading h3 alt-color\" role=\"tab\" id=\"heading"
 	    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-	    + "\">\n						<a data-toggle=\"collapse\" data-parent=\"#accordion1\" href=\"#collapse"
-	    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-	    + "\" aria-expanded=\"true\" aria-controls=\"collapse"
-	    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-	    + "\">\n							<span class=\"flag-icon flag-icon-"
+	    + "\">\n				<span class=\"col-md-2 flag-icon flag-icon-"
 	    + alias4(((helper = (helper = helpers.country || (depth0 != null ? depth0.country : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"country","hash":{},"data":data}) : helper)))
-	    + "\"></span> "
+	    + "\"></span>\n				<div class=\"col-md-2\">"
 	    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-	    + "\n						</a>\n					</div>\n					<div id=\"collapse"
-	    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-	    + "\" class=\"panel-collapse collapse\" role=\"tabpanel\" aria-labelledby=\"heading"
-	    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-	    + "\">\n						<div text=\"center\">\n							<div class=\"btn btn-lg btn-info\" id=\""
-	    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-	    + "\" data-toggle=\"modal\" data-target=\"#player-modal\">\n								"
-	    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-	    + " schedule\n							</div>\n						</div>\n						<div class=\"alt-color\"> Score: "
+	    + "</div>\n				<div class=\"col-md-2\">Score "
 	    + alias4(((helper = (helper = helpers.score || (depth0 != null ? depth0.score : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"score","hash":{},"data":data}) : helper)))
-	    + "</div>\n						<div class=\"alt-color\"> Wins: "
+	    + "</div>\n				<div class=\"col-md-2\">Wins "
 	    + alias4(((helper = (helper = helpers.wins || (depth0 != null ? depth0.wins : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"wins","hash":{},"data":data}) : helper)))
-	    + "</div>\n						<div class=\"alt-color\"> Losses: "
+	    + "</div>\n				<div class=\"col-md-2\">Losses "
 	    + alias4(((helper = (helper = helpers.losses || (depth0 != null ? depth0.losses : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"losses","hash":{},"data":data}) : helper)))
-	    + " </div>\n						<div class=\"alt-color\"> Draws: "
-	    + alias4(((helper = (helper = helpers.draws || (depth0 != null ? depth0.draws : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"draws","hash":{},"data":data}) : helper)))
-	    + " </div>\n						<div class=\"alt-color\"> Games Played: "
-	    + alias4(((helper = (helper = helpers.matchesPlayed || (depth0 != null ? depth0.matchesPlayed : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"matchesPlayed","hash":{},"data":data}) : helper)))
-	    + "</div> \n					</div>\n				</div> \n";
+	    + "</div>\n				<button class=\"btn btn-small btn-info col-md-2\" data-target=\"#player-modal\" id=\""
+	    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
+	    + "\" data-toggle=\"modal\">Player Schedule</button>\n				<br>\n			</div>\n";
 	},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
 	    var stack1;
 
@@ -1617,7 +1611,7 @@ webpackJsonp([0],[
 	    + alias4(((helper = (helper = helpers.key || (data && data.key)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"key","hash":{},"data":data}) : helper)))
 	    + "\" aria-expanded=\"true\" aria-controls=\"collapse"
 	    + alias4(((helper = (helper = helpers.key || (data && data.key)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"key","hash":{},"data":data}) : helper)))
-	    + "\">\n					<center class=\"h2 alt-color\">WEEK "
+	    + "\">\n					<center class=\"h2 alt-color\">Week "
 	    + alias4(container.lambda(((stack1 = (depth0 != null ? depth0["0"] : depth0)) != null ? stack1.week : stack1), depth0))
 	    + " </center>\n				</span>\n			</h4>\n		</div>\n		<div id=\"collapse"
 	    + alias4(((helper = (helper = helpers.key || (data && data.key)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"key","hash":{},"data":data}) : helper)))
@@ -1631,25 +1625,37 @@ webpackJsonp([0],[
 
 	  return "				<ul class=\"list-group\">\n				<li class=\"list-group-item "
 	    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.completedFlag : depth0),{"name":"if","hash":{},"fn":container.program(3, data, 0),"inverse":container.program(5, data, 0),"data":data})) != null ? stack1 : "")
-	    + " col-md-6\">\n					<div class=\"heading\" role=\"tab\" id=\"heading"
+	    + " col-md-4\">\n					<div class=\"heading h4\" role=\"tab\" id=\"heading"
 	    + alias2(container.lambda(depth0, depth0))
 	    + "\">\n						"
 	    + alias2(((helper = (helper = helpers.league || (depth0 != null ? depth0.league : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias1,{"name":"league","hash":{},"data":data}) : helper)))
-	    + ":	<span class=\"flag-icon flag-icon-"
+	    + ":	<b><span class=\"flag-icon flag-icon-"
 	    + alias2(((helper = (helper = helpers.player1country || (depth0 != null ? depth0.player1country : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias1,{"name":"player1country","hash":{},"data":data}) : helper)))
 	    + "\"></span> "
 	    + alias2(((helper = (helper = helpers.player1 || (depth0 != null ? depth0.player1 : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias1,{"name":"player1","hash":{},"data":data}) : helper)))
-	    + " vs <span class=\"flag-icon flag-icon-"
+	    + "</b> vs <b><span class=\"flag-icon flag-icon-"
 	    + alias2(((helper = (helper = helpers.player2country || (depth0 != null ? depth0.player2country : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias1,{"name":"player2country","hash":{},"data":data}) : helper)))
 	    + "\"></span> "
 	    + alias2(((helper = (helper = helpers.player2 || (depth0 != null ? depth0.player2 : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias1,{"name":"player2","hash":{},"data":data}) : helper)))
-	    + "\n						<div>Game Status: "
-	    + alias2(((helper = (helper = helpers.status || (depth0 != null ? depth0.status : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias1,{"name":"status","hash":{},"data":data}) : helper)))
-	    + "</div>\n					</div>\n				</li>\n			</ul>\n";
+	    + "</b>\n						<div>Game Status: "
+	    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.matchUrl : depth0),{"name":"if","hash":{},"fn":container.program(7, data, 0),"inverse":container.program(9, data, 0),"data":data})) != null ? stack1 : "")
+	    + "</div>\n						<div></div>\n					</div>\n				</li>\n			</ul>\n";
 	},"3":function(container,depth0,helpers,partials,data) {
 	    return " list-group-item-success ";
 	},"5":function(container,depth0,helpers,partials,data) {
-	    return " list-group-item-warning ";
+	    return " alt-color ";
+	},"7":function(container,depth0,helpers,partials,data) {
+	    var helper;
+
+	  return "Complete (<a href=\""
+	    + container.escapeExpression(((helper = (helper = helpers.matchUrl || (depth0 != null ? depth0.matchUrl : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"matchUrl","hash":{},"data":data}) : helper)))
+	    + "\">replays</a>) ";
+	},"9":function(container,depth0,helpers,partials,data) {
+	    var helper;
+
+	  return " "
+	    + container.escapeExpression(((helper = (helper = helpers.status || (depth0 != null ? depth0.status : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"status","hash":{},"data":data}) : helper)))
+	    + " ";
 	},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
 	    var stack1;
 
@@ -1667,7 +1673,7 @@ webpackJsonp([0],[
 	module.exports = (Handlebars["default"] || Handlebars).template({"1":function(container,depth0,helpers,partials,data) {
 	    var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression, alias5=container.lambda;
 
-	  return "	<div class=\"h2 panel "
+	  return "	<div class=\"h3 panel "
 	    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.status : depth0),{"name":"if","hash":{},"fn":container.program(2, data, 0),"inverse":container.program(4, data, 0),"data":data})) != null ? stack1 : "")
 	    + " col-md-12\">\r\n		<div class=\"panel-heading\" role=\"tab\" id=\"heading\">\r\n			"
 	    + alias4(((helper = (helper = helpers.league || (depth0 != null ? depth0.league : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"league","hash":{},"data":data}) : helper)))
@@ -1681,17 +1687,39 @@ webpackJsonp([0],[
 	    + alias4(alias5(((stack1 = (depth0 != null ? depth0.player2 : depth0)) != null ? stack1.name : stack1), depth0))
 	    + "\r\n				<div>\r\n					Game Status:\r\n"
 	    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.status : depth0),{"name":"if","hash":{},"fn":container.program(6, data, 0),"inverse":container.program(8, data, 0),"data":data})) != null ? stack1 : "")
-	    + "				</div>\r\n			</div>	\r\n			<div>"
+	    + "				</div>\r\n			</div>\r\n			<div>"
 	    + alias4(((helper = (helper = helpers.summary || (depth0 != null ? depth0.summary : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"summary","hash":{},"data":data}) : helper)))
-	    + "</div>\r\n		</div>\r\n	</div>\r\n";
+	    + "</div>\r\n			<br>\r\n"
+	    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.games : depth0),{"name":"each","hash":{},"fn":container.program(10, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+	    + "		</div>\r\n	</div>\r\n";
 	},"2":function(container,depth0,helpers,partials,data) {
 	    return "panel-success ";
 	},"4":function(container,depth0,helpers,partials,data) {
-	    return " panel-warning";
+	    return " alt-color";
 	},"6":function(container,depth0,helpers,partials,data) {
-	    return "						Completed \r\n";
+	    var helper;
+
+	  return "						Completed (<a href=\""
+	    + container.escapeExpression(((helper = (helper = helpers.matchUrl || (depth0 != null ? depth0.matchUrl : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"matchUrl","hash":{},"data":data}) : helper)))
+	    + "\">replays</a>)\r\n";
 	},"8":function(container,depth0,helpers,partials,data) {
 	    return "						Not completed\r\n";
+	},"10":function(container,depth0,helpers,partials,data) {
+	    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+	  return "			<div>Game "
+	    + alias4(((helper = (helper = helpers.index || (data && data.index)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"index","hash":{},"data":data}) : helper)))
+	    + " Spy "
+	    + alias4(((helper = (helper = helpers.spy || (depth0 != null ? depth0.spy : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"spy","hash":{},"data":data}) : helper)))
+	    + ". Sniper "
+	    + alias4(((helper = (helper = helpers.sniper || (depth0 != null ? depth0.sniper : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"sniper","hash":{},"data":data}) : helper)))
+	    + ". Level "
+	    + alias4(((helper = (helper = helpers.level || (depth0 != null ? depth0.level : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"level","hash":{},"data":data}) : helper)))
+	    + " "
+	    + alias4(((helper = (helper = helpers.gameType || (depth0 != null ? depth0.gameType : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"gameType","hash":{},"data":data}) : helper)))
+	    + ". Result: <b>"
+	    + alias4(((helper = (helper = helpers.result || (depth0 != null ? depth0.result : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"result","hash":{},"data":data}) : helper)))
+	    + "</b></div>\r\n";
 	},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
 	    var stack1;
 
