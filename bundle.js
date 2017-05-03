@@ -1687,7 +1687,7 @@ webpackJsonp([0],[
 	    + container.escapeExpression(((helper = (helper = helpers.status || (depth0 != null ? depth0.status : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"status","hash":{},"data":data}) : helper)))
 	    + " <br><br>";
 	},"11":function(container,depth0,helpers,partials,data) {
-	    return "				<div><a href='http://www.google.com'>Click here for recap!</a><br></div>\n";
+	    return "				<div><a href='http://www.placekitten.com'>Click here for recap!</a><br></div>\n";
 	},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
 	    var stack1;
 
