@@ -117,7 +117,7 @@ const showAllScheduleSuccess = function(data) {
 };
 
 const displayPlayoffGames = function() {
-    $('#results').html('Coming soon!');
+    $('#results').html('<center><div class="h3">Coming Soon!™</div></center>');
 }
 
 module.exports = {

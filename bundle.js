@@ -350,7 +350,7 @@ webpackJsonp([0],[
 	};
 
 	var displayPlayoffGames = function displayPlayoffGames() {
-	    $('#results').html('Coming soon!');
+	    $('#results').html('<center><div class="h3">Coming Soon!™</div></center>');
 	};
 
 	module.exports = {
