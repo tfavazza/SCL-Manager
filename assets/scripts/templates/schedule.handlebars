@@ -1,11 +1,11 @@
 
-<div id="accordion" role="tablist" aria-multiselectable="true" class="testing-css">
+<div id="accordion" role="tablist" aria-multiselectable="true" class="testing-css container-fluid">
 	{{#each this}}
 	<div class="panel panel-primary col-sm-12 col-md-12 .lead">
 		<div class="panel-heading" role="tab" id="heading{{@key}}">
 			<h4 class="division-name">
 				<span style="cursor: pointer" data-toggle="collapse" data-parent="#accordion" href="#collapse{{@key}}" aria-expanded="true" aria-controls="collapse{{@key}}">
-					<center class="h2 alt-color">Week {{this.0.week}} </center>
+					<center class="h2">Week {{this.0.week}} </center>
 				</span>
 			</h4>
 		</div>
@@ -16,8 +16,10 @@
 				<li class="list-group-item {{#if completedFlag}} list-group-item-success {{else}} alt-color {{/if}} col-md-4">
 					<div class="heading h4" role="tab" id="heading{{this}}">
 						{{league}}:	<b><span class="flag-icon flag-icon-{{player1country}}"></span> {{player1}}</b> vs <b><span class="flag-icon flag-icon-{{player2country}}"></span> {{player2}}</b>
-						<div>Game Status: {{#if matchUrl}}Complete (<a href="{{matchUrl}}">replays</a>) {{else}} {{status}} {{/if}}</div>
-						<div></div>
+						<div>Game Status: {{#if matchUrl}}Complete (<a href="{{matchUrl}}">Download replays</a>) {{else}} {{status}} <br><br>{{/if}}</div>
+					{{#if completedFlag}}
+				<div><a href='http://www.google.com'>Click here for recap!</a><br></div>
+				{{/if}}
 					</div>
 				</li>
 			</ul>

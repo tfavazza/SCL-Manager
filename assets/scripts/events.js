@@ -65,7 +65,7 @@ const expandOrCollapseAllTabs = function() {
 };
 
 const onDisplayWeeklySchedule = function() {
-  let startDate = new Date('2017-04-15');
+  let startDate = new Date('2017-04-27');
   let today = new Date();
   let leagueWeek = Math.abs(today - startDate) / 86400000;
   leagueWeek = parseInt(leagueWeek / 7 + 1);
@@ -74,7 +74,30 @@ const onDisplayWeeklySchedule = function() {
   .done(ui.displayThisWeeksSchedule).fail(console.log('whoops!'));
 };
 
+const onscrollUp = function(){
+     $(window).scroll(function () {
+            if ($(this).scrollTop() > 50) {
+                $('#back-to-top').fadeIn();
+            } else {
+                $('#back-to-top').fadeOut();
+            }
+        });
+        // scroll body to 0px on click
+        $('#back-to-top').click(function () {
+            $('#back-to-top').tooltip('hide');
+            $('body,html').animate({
+                scrollTop: 0
+            }, 800);
+            return false;
+        });
+        
+        $('#back-to-top').tooltip('show');
+
+};
+
+
 const addHandlers = function() {
+$(document).ready(onscrollUp);
 $('.division-name').on('click', displayLeagueMembers);
 $('#zip-file').on('click', onZipFileUpload);
 $(document).ready(onDisplayLeagueData);

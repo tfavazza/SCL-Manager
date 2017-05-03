@@ -11,12 +11,15 @@
 		<div id="collapse{{name}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{name}}">		
 			{{# each players}}
 			<div class="panel-heading h3 alt-color" role="tab" id="heading{{name}}">
-				<span class="col-md-2 flag-icon flag-icon-{{country}}"></span>
-				<div class="col-md-2">{{name}}</div>
+				<span class="col-md-1 flag-icon flag-icon-{{country}}"></span>
+				<div class="col-md-2">
+					 {{name}}
+				</div>
 				<div class="col-md-2">Score {{score}}</div>
 				<div class="col-md-2">Wins {{wins}}</div>
 				<div class="col-md-2">Losses {{losses}}</div>
-				<button class="btn btn-small btn-info col-md-2" data-target="#player-modal" id="{{name}}" data-toggle="modal">Player Schedule</button>
+				<div class="col-md-2">Draws {{draws}}</div>
+				<button class="btn btn-small btn-info col-md-1" data-target="#player-modal" id="{{name}}" data-toggle="modal">Schedule</button>
 				<br>
 			</div>
 			{{/each}}

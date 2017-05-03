@@ -4,7 +4,8 @@ const handleBarsLeague = require('../scripts/templates/leagues.handlebars');
 const events = require('./events.js');
 const handlebarsplayer = require('../scripts/templates/player.handlebars');
 const handebarsSchedule = require('../scripts/templates/schedule.handlebars');
-const handlebarsWeek = require('../scripts/templates/week.handlebars')
+const handlebarsWeek = require('../scripts/templates/week.handlebars');
+const confirmation = require('../scripts/templates/confirmation.handlebars');
 
 const getDate = function() {
     let utc = new Date().toJSON().slice(5, 10) + '-' + new Date().toJSON().slice(0,4);
@@ -81,6 +82,7 @@ const organizeFullSchedule = function(rawSchedule) {
 };
 
 const displayThisWeeksSchedule = function(weeklySchedule) {
+    console.log(weeklySchedule);
   $('#weekly-schedule').html(handlebarsWeek(weeklySchedule));
 };
 
@@ -92,7 +94,7 @@ const displayLeagueDataSuccess = function(data) {
 
 const zipFileUploadSuccess = function(response) {
     console.log(response);
-    $('#confirmation').html('<div class="alert alert-info"> <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Success!</strong> Upload successful.</div>');
+    $('#confirmation').html(confirmation(response));
 };
 
 const zipFileUploadFailure = function(response) {
