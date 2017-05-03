@@ -1,4 +1,4 @@
-<div class="container-fluid alt-color">
+<div class="alt-color">
 {{#each this}}
 	<div class="week-tabs h4 panel {{#if status}}panel-success{{else}} alt-color{{/if}} col-md-4 row">
 		<div class="panel-heading" role="tab" id="heading"><center><strong>{{league}}</strong></center>
@@ -15,7 +15,9 @@
 					{{/if}}
 				</div>
 			</div>
-			{{summary}}
+			{{#each summary}}
+			<div>{{.}}</div>
+			{{/each}}
 		</div>
 	</div>
 {{/each}}

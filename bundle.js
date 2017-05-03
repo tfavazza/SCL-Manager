@@ -1611,11 +1611,11 @@ webpackJsonp([0],[
 	    + alias2(alias1(((stack1 = (depth0 != null ? depth0.player2 : depth0)) != null ? stack1.country : stack1), depth0))
 	    + "\"></span> <b>"
 	    + alias2(alias1(((stack1 = (depth0 != null ? depth0.player2 : depth0)) != null ? stack1.name : stack1), depth0))
-	    + "</b></div>\n<div class=\"alt-color\"><b>Summary:</b>\n"
-	    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},depth0,{"name":"each","hash":{},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-	    + "</div>\n</blockquote>\n";
+	    + "</b></div>\n"
+	    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.summary : depth0),{"name":"each","hash":{},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+	    + "</blockquote>\n";
 	},"2":function(container,depth0,helpers,partials,data) {
-	    return "<div>"
+	    return "<div class=\"alt-color\">"
 	    + container.escapeExpression(container.lambda(depth0, depth0))
 	    + "</div>\n";
 	},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
@@ -1703,25 +1703,25 @@ webpackJsonp([0],[
 	var Handlebars = __webpack_require__(9);
 	function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
 	module.exports = (Handlebars["default"] || Handlebars).template({"1":function(container,depth0,helpers,partials,data) {
-	    var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression, alias5=container.lambda;
+	    var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=container.escapeExpression, alias3=container.lambda;
 
 	  return "	<div class=\"week-tabs h4 panel "
 	    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.status : depth0),{"name":"if","hash":{},"fn":container.program(2, data, 0),"inverse":container.program(4, data, 0),"data":data})) != null ? stack1 : "")
 	    + " col-md-4 row\">\r\n		<div class=\"panel-heading\" role=\"tab\" id=\"heading\"><center><strong>"
-	    + alias4(((helper = (helper = helpers.league || (depth0 != null ? depth0.league : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"league","hash":{},"data":data}) : helper)))
+	    + alias2(((helper = (helper = helpers.league || (depth0 != null ? depth0.league : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(alias1,{"name":"league","hash":{},"data":data}) : helper)))
 	    + "</strong></center>\r\n			<div>\r\n				<span class=\"flag-icon flag-icon-"
-	    + alias4(alias5(((stack1 = (depth0 != null ? depth0.player1 : depth0)) != null ? stack1.country : stack1), depth0))
+	    + alias2(alias3(((stack1 = (depth0 != null ? depth0.player1 : depth0)) != null ? stack1.country : stack1), depth0))
 	    + "\"></span> "
-	    + alias4(alias5(((stack1 = (depth0 != null ? depth0.player1 : depth0)) != null ? stack1.name : stack1), depth0))
+	    + alias2(alias3(((stack1 = (depth0 != null ? depth0.player1 : depth0)) != null ? stack1.name : stack1), depth0))
 	    + " vs \r\n				<span class=\"flag-icon flag-icon-"
-	    + alias4(alias5(((stack1 = (depth0 != null ? depth0.player2 : depth0)) != null ? stack1.country : stack1), depth0))
+	    + alias2(alias3(((stack1 = (depth0 != null ? depth0.player2 : depth0)) != null ? stack1.country : stack1), depth0))
 	    + "\"></span> "
-	    + alias4(alias5(((stack1 = (depth0 != null ? depth0.player2 : depth0)) != null ? stack1.name : stack1), depth0))
+	    + alias2(alias3(((stack1 = (depth0 != null ? depth0.player2 : depth0)) != null ? stack1.name : stack1), depth0))
 	    + "\r\n				<div>\r\n					<b>Game Status:</b>\r\n"
 	    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.status : depth0),{"name":"if","hash":{},"fn":container.program(6, data, 0),"inverse":container.program(8, data, 0),"data":data})) != null ? stack1 : "")
-	    + "				</div>\r\n			</div>\r\n			"
-	    + alias4(((helper = (helper = helpers.summary || (depth0 != null ? depth0.summary : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"summary","hash":{},"data":data}) : helper)))
-	    + "\r\n		</div>\r\n	</div>\r\n";
+	    + "				</div>\r\n			</div>\r\n"
+	    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.summary : depth0),{"name":"each","hash":{},"fn":container.program(10, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+	    + "		</div>\r\n	</div>\r\n";
 	},"2":function(container,depth0,helpers,partials,data) {
 	    return "panel-success";
 	},"4":function(container,depth0,helpers,partials,data) {
@@ -1734,10 +1734,14 @@ webpackJsonp([0],[
 	    + "\">replays</a>)\r\n";
 	},"8":function(container,depth0,helpers,partials,data) {
 	    return "						Not completed\r\n						<br><br><br><br><br>\r\n";
+	},"10":function(container,depth0,helpers,partials,data) {
+	    return "			<div>"
+	    + container.escapeExpression(container.lambda(depth0, depth0))
+	    + "</div>\r\n";
 	},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
 	    var stack1;
 
-	  return "<div class=\"container-fluid alt-color\">\r\n"
+	  return "<div class=\"alt-color\">\r\n"
 	    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},depth0,{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
 	    + "</div>\r\n\r\n";
 	},"useData":true});
