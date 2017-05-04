@@ -344,7 +344,7 @@ webpackJsonp([0],[
 	var zipFileUploadFailure = function zipFileUploadFailure(response) {
 	    var error = response.responseJSON.errorMessage;
 	    //response.responseText
-	    $('#confirmation').html('<div class="alert alert-info"> <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Oh no!</strong> Something went wrong! ' + error + '.</div>');
+	    $('#confirmation').html('<div class="alert alert-info"> <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Oh no!</strong> Something went wrong! ' + error + '</div>');
 	};
 
 	var displayPlayerScheduleSuccess = function displayPlayerScheduleSuccess(data) {
@@ -388,7 +388,7 @@ webpackJsonp([0],[
 	module.exports = (Handlebars["default"] || Handlebars).template({"1":function(container,depth0,helpers,partials,data) {
 	    var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
-	  return "	<div class=\"panel panel-primary col-md-12 col-sm-12 .lead\">\n		<span style=\"cursor: pointer\" class=\"panel-primary\" data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse"
+	  return "	<div class=\"panel panel-primary col-md-12 col-sm-12 .lead\">\n		<span style=\"cursor: pointer\" class=\"panel-primary\" data-toggle=\"collapse\" href=\"#collapse"
 	    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
 	    + "\" aria-expanded=\"true\" aria-controls=\"collapse"
 	    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
@@ -1649,7 +1649,7 @@ webpackJsonp([0],[
 
 	  return "	<div class=\"panel panel-primary col-sm-12 col-md-12 .lead\">\n		<div class=\"panel-heading row\" role=\"tab\" id=\"heading"
 	    + alias4(((helper = (helper = helpers.key || (data && data.key)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"key","hash":{},"data":data}) : helper)))
-	    + "\">\n			<h4 class=\"division-name\">\n				<span style=\"cursor: pointer\" data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse"
+	    + "\">\n			<h4 class=\"division-name\">\n				<span style=\"cursor: pointer\" data-toggle=\"collapse\" href=\"#collapse"
 	    + alias4(((helper = (helper = helpers.key || (data && data.key)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"key","hash":{},"data":data}) : helper)))
 	    + "\" aria-expanded=\"true\" aria-controls=\"collapse"
 	    + alias4(((helper = (helper = helpers.key || (data && data.key)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"key","hash":{},"data":data}) : helper)))
