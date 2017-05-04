@@ -13,12 +13,12 @@
 			<div id="accordion1" role="tablist" aria-multiselectable="true" >
 				{{#each this}}
 				<ul class="list-group">
-				<li class="list-group-item {{#if completedFlag}} list-group-item-success {{else}} alt-color {{/if}} col-md-4">
+				<li class="list-group-item {{#if completedFlag}} list-group-item-success {{else}} alt-color {{/if}} col-lg-4 col-md-12 col-sm-12">
 					<div class="heading h4" role="tab" id="heading{{this}}">
 						{{league}}:	<b><span class="flag-icon flag-icon-{{player1country}}"></span> {{player1}}</b> vs <b><span class="flag-icon flag-icon-{{player2country}}"></span> {{player2}}</b>
-						<div>Game Status: {{#if matchUrl}}Complete (<a href="{{matchUrl}}">Download replays</a>) {{else}} {{status}} <br><br>{{/if}}</div>
+						<div>Game Status: {{#if matchUrl}}Complete (<a href="{{matchUrl}}">Download replays</a>) {{else}} {{status}} <br><br><br>{{/if}}</div>
 					{{#if completedFlag}}
-				<div><a href='http://www.placekitten.com'>Click here for recap!</a><br></div>
+					<div class="col-md-2 col-md-offset-3"><button class="game-details btn btn-lg btn-success text-center" data-target="#recap-modal" id="{{id}}" data-toggle="modal">Game Details</button></div>
 				{{/if}}
 					</div>
 				</li>

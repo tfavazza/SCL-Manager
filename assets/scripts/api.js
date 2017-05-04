@@ -45,10 +45,18 @@ const displayAWeek = function(weekNumber) {
 	});
 };
 
+const getGameRecap = function(id) {
+  return $.ajax({
+    url: app.host + '/match/' + id,
+    method: 'GET'
+  });
+};
+
 module.exports = {
 	displayLeagueData,
 	displayPlayerSchedule,
 	displayAllSchedule,
-  	zipFileUpload,
-  	displayAWeek,
+  zipFileUpload,
+  displayAWeek,
+  getGameRecap,
 };

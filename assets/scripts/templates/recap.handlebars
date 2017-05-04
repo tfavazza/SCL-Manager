@@ -1,0 +1,16 @@
+<div class="alt-color">
+  <blockquote>
+    <div class="text-center h2">{{scoreSummary}}</div>
+    <div class="h3">BANS:</div>
+  {{#each draft.payload.bannedMaps}}
+    <div>{{picker}} banned {{map}}.</div>
+  {{/each}}
+  <div class="h3">PICKS:</div>
+  {{#each draft.payload.pickedMaps}}
+    <div>{{picker}} picked {{map}}.</div>
+  {{/each}}
+  {{#each games}}
+    <div>{{description}}</div>
+  {{/each}}
+</blockquote>
+</div>

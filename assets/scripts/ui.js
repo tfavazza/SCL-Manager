@@ -2,10 +2,11 @@
 
 const handleBarsLeague = require('../scripts/templates/leagues.handlebars');
 const events = require('./events.js');
-const handlebarsplayer = require('../scripts/templates/player.handlebars');
+const handlebarsPlayer = require('../scripts/templates/player.handlebars');
 const handebarsSchedule = require('../scripts/templates/schedule.handlebars');
 const handlebarsWeek = require('../scripts/templates/week.handlebars');
-const confirmation = require('../scripts/templates/confirmation.handlebars');
+const handlebarsConfirmation = require('../scripts/templates/confirmation.handlebars');
+const handlebarsRecap = require('../scripts/templates/recap.handlebars');
 
 const getDate = function() {
     let utc = new Date().toJSON().slice(5, 10) + '-' + new Date().toJSON().slice(0,4);
@@ -14,7 +15,6 @@ const getDate = function() {
 };
 
 const organizeFullSchedule = function(rawSchedule) {
-    console.log(rawSchedule);
     let  fixedSchedule = {
         "Week-1": [],
         "Week-2": [],
@@ -29,6 +29,7 @@ const organizeFullSchedule = function(rawSchedule) {
     };
     const buildAWeek = function(week) {
         let weekSchedule = {
+            "id": rawSchedule[week].id,
             "week": rawSchedule[week].week,
             "league": rawSchedule[week].league,
             "player1": rawSchedule[week].player1.name,
@@ -36,7 +37,7 @@ const organizeFullSchedule = function(rawSchedule) {
             "player2": rawSchedule[week].player2.name,
             "player2country": rawSchedule[week].player2.country,
             "status": "Not played",
-            "completedFlag": rawSchedule[week].status, 
+            "completedFlag": rawSchedule[week].status,
             "matchUrl": rawSchedule[week].matchUrl
         };
         if(rawSchedule[week].status === 1) {
@@ -94,12 +95,11 @@ const displayLeagueDataSuccess = function(data) {
 
 const zipFileUploadSuccess = function(response) {
     console.log(response);
-    $('#confirmation').html(confirmation(response));
+    $('#confirmation').html(handlebarsConfirmation(response));
 };
 
 const zipFileUploadFailure = function(response) {
     let error = response.responseJSON.errorMessage;
-    console.log(response.responseJSON.errorMessage);
     //response.responseText
   $('#confirmation').html(
     '<div class="alert alert-info"> <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Oh no!</strong> Something went wrong! ' + error + '.</div>');
@@ -107,8 +107,7 @@ const zipFileUploadFailure = function(response) {
 
 const displayPlayerScheduleSuccess = function(data) {
     let matches = data.matches;
-    console.log(matches);
-    $('#player-schedule').html(handlebarsplayer(matches));
+    $('#player-schedule').html(handlebarsPlayer(matches));
 };
 
 const showAllScheduleSuccess = function(data) {
@@ -120,6 +119,11 @@ const displayPlayoffGames = function() {
     $('#results').html('<center><div class="h3">Coming Soon!™</div></center>');
 }
 
+const displayGameRecap = function(recap) {
+    $('#recap-results').html(handlebarsRecap(recap))
+    console.log(recap);
+}
+
 module.exports = {
     displayLeagueDataSuccess,
     displayPlayerScheduleSuccess,
@@ -128,5 +132,6 @@ module.exports = {
     zipFileUploadFailure,
     getDate,
     displayThisWeeksSchedule,
-    displayPlayoffGames
+    displayPlayoffGames,
+    displayGameRecap,
 };
