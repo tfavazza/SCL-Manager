@@ -1,14 +1,19 @@
 <div class="alt-color">
   <blockquote>
     <div class="text-center h2">{{scoreSummary}}</div>
+  {{#if draft}}
     <div class="h3">BANS:</div>
   {{#each draft.payload.bannedMaps}}
-    <div>{{picker}} banned {{map}}.</div>
+    <div>&#x274C; {{picker}} banned {{map}}.</div>
   {{/each}}
   <div class="h3">PICKS:</div>
   {{#each draft.payload.pickedMaps}}
-    <div>{{picker}} picked {{map}}.</div>
+    <div>&#10004; {{picker}} picked {{map}}.</div>
   {{/each}}
+  {{else}}
+  <div>No draft information available &#128579;</div>
+  {{/if}}
+  <div class="h3">RESULTS:</div>
   {{#each games}}
     <div>{{description}}</div>
   {{/each}}

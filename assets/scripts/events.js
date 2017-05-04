@@ -53,10 +53,10 @@ const onDisplayAllSchedule = function() {
 const expandOrCollapseAllTabs = function() {
   $('.expand-collapse').on('click', function () {
     if(toggling) {
-      $('#accordion .panel-collapse').collapse('show');
+      $('#accordion .collapse').collapse('show');
       toggling = false;
     } else {
-      $('#accordion .panel-collapse').collapse('hide');
+      $('#accordion .collapse').collapse('hide');
       toggling = true;
     }
   });

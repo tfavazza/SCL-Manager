@@ -13,7 +13,6 @@ const displayLeagueData = function() {
 };
 
 const zipFileUpload = function(data) {
-	console.log(data);
 	return $.ajax({
 		url: app.host + '/match/parse',
 		method: 'POST',
