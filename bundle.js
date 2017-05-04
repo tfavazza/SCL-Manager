@@ -1625,6 +1625,8 @@ webpackJsonp([0],[
 	    + alias2(alias1(((stack1 = (depth0 != null ? depth0.player2 : depth0)) != null ? stack1.country : stack1), depth0))
 	    + "\"></span> <b>"
 	    + alias2(alias1(((stack1 = (depth0 != null ? depth0.player2 : depth0)) != null ? stack1.name : stack1), depth0))
+	    + "</b></div>\n  <div class=\"alt-color\"><b>"
+	    + alias2(alias1((depth0 != null ? depth0.scoreSummary : depth0), depth0))
 	    + "</b></div>\n"
 	    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.summary : depth0),{"name":"each","hash":{},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
 	    + "</blockquote>\n";
