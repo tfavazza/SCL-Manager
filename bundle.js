@@ -167,9 +167,6 @@ webpackJsonp([0],[
 
 	var app = __webpack_require__(6);
 
-	//const ui = require('./ui.js');
-
-
 	var displayLeagueData = function displayLeagueData() {
 		return $.ajax({
 			url: app.host + '/league/',
@@ -1668,7 +1665,7 @@ webpackJsonp([0],[
 
 	  return "				<ul class=\"list-group\">\n					<li class=\"list-group-item "
 	    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.completedFlag : depth0),{"name":"if","hash":{},"fn":container.program(3, data, 0),"inverse":container.program(5, data, 0),"data":data})) != null ? stack1 : "")
-	    + " col-lg-4 col-md-12 col-sm-12\">\n						<div class=\"heading h4 col-lg-12\" role=\"tab\" id=\"heading"
+	    + " col-lg-4 col-md-12 col-sm-12\">\n						<div class=\"h4 col-lg-12\" role=\"tab\" id=\"heading"
 	    + alias2(container.lambda(depth0, depth0))
 	    + "\">\n							<div><b>"
 	    + alias2(((helper = (helper = helpers.league || (depth0 != null ? depth0.league : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias1,{"name":"league","hash":{},"data":data}) : helper)))
@@ -1724,9 +1721,9 @@ webpackJsonp([0],[
 	module.exports = (Handlebars["default"] || Handlebars).template({"1":function(container,depth0,helpers,partials,data) {
 	    var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=container.escapeExpression, alias3=container.lambda;
 
-	  return "	<div class=\"week-tabs h4 panel "
+	  return "		<li class=\"week-tabs h4 list-group-item "
 	    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.status : depth0),{"name":"if","hash":{},"fn":container.program(2, data, 0),"inverse":container.program(4, data, 0),"data":data})) != null ? stack1 : "")
-	    + " col-md-4 col-sm-12\">\r\n		<div class=\"panel-heading row\" role=\"tab\" id=\"heading\">\r\n			<div class=\"center-text\"><strong>"
+	    + " col-md-12 col-sm-12 col-lg-4\">\r\n			<div class=\"panel-heading\" role=\"tab\" id=\"heading\">\r\n				<div class=\"center-text\"><strong>"
 	    + alias2(((helper = (helper = helpers.league || (depth0 != null ? depth0.league : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(alias1,{"name":"league","hash":{},"data":data}) : helper)))
 	    + "</strong></div>\r\n				<span class=\"flag-icon flag-icon-"
 	    + alias2(alias3(((stack1 = (depth0 != null ? depth0.player1 : depth0)) != null ? stack1.country : stack1), depth0))
@@ -1738,27 +1735,27 @@ webpackJsonp([0],[
 	    + alias2(alias3(((stack1 = (depth0 != null ? depth0.player2 : depth0)) != null ? stack1.name : stack1), depth0))
 	    + "\r\n				<div>\r\n					<b>Game Status:</b>\r\n"
 	    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.status : depth0),{"name":"if","hash":{},"fn":container.program(6, data, 0),"inverse":container.program(8, data, 0),"data":data})) != null ? stack1 : "")
-	    + "				</div>\r\n		</div>\r\n	</div>\r\n";
+	    + "				</div>\r\n			</div>\r\n";
 	},"2":function(container,depth0,helpers,partials,data) {
-	    return "panel-success";
+	    return "list-group-item-success";
 	},"4":function(container,depth0,helpers,partials,data) {
-	    return " alt-color";
+	    return "alt-color";
 	},"6":function(container,depth0,helpers,partials,data) {
 	    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
-	  return "						<div>Completed (<a href=\""
+	  return "						<span>Completed (<a href=\""
 	    + alias4(((helper = (helper = helpers.matchUrl || (depth0 != null ? depth0.matchUrl : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"matchUrl","hash":{},"data":data}) : helper)))
-	    + "\">replays</a>)\r\n						<button class=\"game-details btn btn-md btn-success text-center\" data-target=\"#recap-modal\" id=\""
+	    + "\">Replays</a>) \r\n							<a class=\"game-details\" data-target=\"#recap-modal\" href=\"\" id=\""
 	    + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
-	    + "\" data-toggle=\"modal\">Game Details</button></div>\r\n";
+	    + "\" data-toggle=\"modal\"><b>Game Details</b></a>\r\n						</span>\r\n";
 	},"8":function(container,depth0,helpers,partials,data) {
-	    return "						<div>Not completed</div>\r\n						<br>\r\n";
+	    return "						<span>Not completed</span>\r\n";
 	},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
 	    var stack1;
 
-	  return "<div class=\"alt-color\">\r\n"
+	  return "<div class=\"alt-color\">\r\n	<ul class=\"list-group\">\r\n"
 	    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},depth0,{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-	    + "</div>";
+	    + "		</ul>\r\n	</div>";
 	},"useData":true});
 
 /***/ },
@@ -1770,7 +1767,7 @@ webpackJsonp([0],[
 	module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
 	    var stack1;
 
-	  return "<div class=\"container\">\r\n  <div class=\"alert alert-info\"> \r\n	 <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;\r\n	 </a>\r\n   <strong>Success!</strong> Upload successful.\r\n      <div>Here is some forum-ready text for you to copy</div> \r\n      <span class=\"h3\"><b>"
+	  return "<div class=\"container\">\r\n  <div class=\"alert alert-info\"> \r\n	 <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;\r\n	 </a>\r\n   <strong>Success!</strong> Upload successful.\r\n      <div>Here is some forum-ready text for you to copy</div>\r\n      <br>\r\n      <span class=\"h4 blockquote\"><b>"
 	    + ((stack1 = container.lambda((depth0 != null ? depth0.forumPost : depth0), depth0)) != null ? stack1 : "")
 	    + "</b></span>\r\n  </div>\r\n</div>\r\n";
 	},"useData":true});

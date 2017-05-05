@@ -2,8 +2,6 @@
 
 const app = require('./app.js');
 
-//const ui = require('./ui.js');
-
 
 const displayLeagueData = function() {
   return $.ajax({

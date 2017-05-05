@@ -1,21 +1,22 @@
 <div class="alt-color">
-{{#each this}}
-	<div class="week-tabs h4 panel {{#if status}}panel-success{{else}} alt-color{{/if}} col-md-4 col-sm-12">
-		<div class="panel-heading row" role="tab" id="heading">
-			<div class="center-text"><strong>{{league}}</strong></div>
+	<ul class="list-group">
+		{{#each this}}
+		<li class="week-tabs h4 list-group-item {{#if status}}list-group-item-success{{else}}alt-color{{/if}} col-md-12 col-sm-12 col-lg-4">
+			<div class="panel-heading" role="tab" id="heading">
+				<div class="center-text"><strong>{{league}}</strong></div>
 				<span class="flag-icon flag-icon-{{player1.country}}"></span> {{player1.name}} vs 
 				<span class="flag-icon flag-icon-{{player2.country}}"></span> {{player2.name}}
 				<div>
 					<b>Game Status:</b>
 					{{#if status}}
-						<div>Completed (<a href="{{matchUrl}}">replays</a>)
-						<button class="game-details btn btn-md btn-success text-center" data-target="#recap-modal" id="{{id}}" data-toggle="modal">Game Details</button></div>
-					{{else}}
-						<div>Not completed</div>
-						<br>
-					{{/if}}
+						<span>Completed (<a href="{{matchUrl}}">Replays</a>) 
+							<a class="game-details" data-target="#recap-modal" href="" id="{{id}}" data-toggle="modal"><b>Game Details</b></a>
+						</span>
+						{{else}}
+						<span>Not completed</span>
+						{{/if}}
 				</div>
-		</div>
+			</div>
+			{{/each}}
+		</ul>
 	</div>
-{{/each}}
-</div>
