@@ -1,30 +1,37 @@
-
-<div id="accordion" role="tablist" aria-multiselectable="true" class="testing-css container-fluid">
+<div id="accordion" role="tablist" aria-multiselectable="true">
 	{{#each this}}
-	<div class="panel panel-primary col-sm-12 col-md-12 .lead">
-		<div class="panel-heading row" role="tab" id="heading{{@key}}">
-			<h4 class="division-name">
-				<span style="cursor: pointer" data-toggle="collapse" href="#collapse{{@key}}" aria-expanded="true" aria-controls="collapse{{@key}}">
-					<center class="h2">Week {{this.0.week}} </center>
-				</span>
-			</h4>
-		</div>
-		<div id="collapse{{@key}}" class="panel-collapse collapse h4" role="tabpanel" aria-labelledby="heading{{@key}}">
-			<div id="accordion1" role="tablist" aria-multiselectable="true" >
-				{{#each this}}
-				<ul class="list-group">
-				<li class="list-group-item {{#if completedFlag}} list-group-item-success {{else}} alt-color {{/if}} col-lg-4 col-md-12 col-sm-12">
-					<div class="heading h4" role="tab" id="heading{{this}}">
-						{{league}}:	<b><span class="flag-icon flag-icon-{{player1country}}"></span> {{player1}}</b> vs <b><span class="flag-icon flag-icon-{{player2country}}"></span> {{player2}}</b>
-						<div>Game Status: {{#if matchUrl}}Complete (<a href="{{matchUrl}}">Download replays</a>) {{else}} {{status}} <br><br><br>{{/if}}</div>
-					{{#if completedFlag}}
-					<div class="col-md-2 col-md-offset-3"><button class="game-details btn btn-lg btn-success text-center" data-target="#recap-modal" id="{{id}}" data-toggle="modal">Game Details</button></div>
-				{{/if}}
-					</div>
-				</li>
-			</ul>
-				{{/each}}
+	<div class="panel panel-primary col-md-12 col-sm-12 .lead">
+		<span style="cursor: pointer" class="panel-primary" data-toggle="collapse" href="#collapse{{@key}}" aria-expanded="true" aria-controls="collapse{{@key}}">
+			<div class="panel-heading row" role="tab" id="heading{{@key}}">
+				<h2 class="division-name text-center">
+					Week {{this.0.week}}
+				</h2>
 			</div>
+		</span>
+		<div id="collapse{{@key}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{@key}}">
+			{{#each this}}
+				<ul class="list-group">
+					<li class="list-group-item {{#if completedFlag}} list-group-item-success {{else}} alt-color {{/if}} col-lg-4 col-md-12 col-sm-12">
+						<div class="heading h4 col-lg-12" role="tab" id="heading{{this}}">
+							<div><b>{{league}}</b></div>
+							<span class="flag-icon flag-icon-{{player1country}}"></span> 
+							<b>{{player1}}</b> vs 
+							<span class="flag-icon flag-icon-{{player2country}}"></span> 
+							<b>{{player2}}</b>
+							<div>Game Status: 
+								{{#if matchUrl}}
+								Complete(<a href="{{matchUrl}}">Download replays</a>) 
+								{{else}} 
+								{{status}}<br><br><br>
+								{{/if}}
+							</div>
+							{{#if completedFlag}}
+								<div class="game-details btn btn-sm btn-success text-center" data-target="#recap-modal" id="{{id}}" data-toggle="modal">Game Details</button>
+							{{/if}}
+						</div>
+					</li>
+				</ul>
+			{{/each}}
 		</div>
 	</div>
 	{{/each}}

@@ -1,8 +1,8 @@
 <div class="alt-color">
 {{#each this}}
-	<div class="week-tabs h4 panel {{#if status}}panel-success{{else}} alt-color{{/if}} col-md-4">
-		<div class="panel-heading row" role="tab" id="heading"><center><strong>{{league}}</strong></center>
-			<div>
+	<div class="week-tabs h4 panel {{#if status}}panel-success{{else}} alt-color{{/if}} col-md-4 col-sm-12">
+		<div class="panel-heading row" role="tab" id="heading">
+			<div class="center-text"><strong>{{league}}</strong></div>
 				<span class="flag-icon flag-icon-{{player1.country}}"></span> {{player1.name}} vs 
 				<span class="flag-icon flag-icon-{{player2.country}}"></span> {{player2.name}}
 				<div>
@@ -15,7 +15,6 @@
 						<br>
 					{{/if}}
 				</div>
-			</div>
 		</div>
 	</div>
 {{/each}}

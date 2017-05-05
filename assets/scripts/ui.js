@@ -100,9 +100,8 @@ const zipFileUploadSuccess = function(response) {
 
 const zipFileUploadFailure = function(response) {
     let error = response.responseJSON.errorMessage;
-    //response.responseText
   $('#confirmation').html(
-    '<div class="alert alert-info"> <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Oh no!</strong> Something went wrong! ' + error + '</div>');
+    '<div class="container"><div class="alert alert-info"> <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Oh no!</strong> Something went wrong! ' + error + '</div></div>');
 };
 
 const displayPlayerScheduleSuccess = function(data) {

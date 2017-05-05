@@ -10,7 +10,7 @@
 </head>
 <body class="container-fluid">
   <div align="right"><button id="wodar-button" class="btn btn-sm btn-danger">Wodar's Button (for Wodar)</button></div>
-  <center><h1><b>SCL Manager</b></h1>
+  <center><div class="h1"><b>SCL Manager</b></div>
    <div id="upload-file">
     <h3>Upload your replay zip files here!</h3>
     <form enctype="multipart/form-data" id="zip-form">
@@ -21,38 +21,52 @@
   </div>
   <div id="confirmation"></div>
 </center>
-
-<ul class="nav nav-tabs">
-  <li class="active"><a class="active h3" data-toggle="tab" href="#standings">Player Standings</a></li>
+<div class="container">
+<ul class="nav nav-tabs center-block text-center">
+  <li class="active"><a class="active h3 standings-color" data-toggle="tab" href="#standings">Player Standings</a></li>
   <li><a class= "h3" data-toggle="tab" href="#this-week">Games This Week</a></li>
   <li><a class= "h3" data-toggle="tab" href="#full-schedule">Full Schedule</a></li>
   <li><a class= "h3" data-toggle="tab" href="#playoff-results">Playoffs and Championships</a></li>
-
-
+  <li><a class= "h3" data-toggle="tab" href="#help">How-To Guide</a></li>
 </ul>
+</div>
 
 <div class="tab-content container">
   <div id="standings" class="tab-pane fade in active">
-    <h3>Players ordered by current score, click players for details</h3>
+    <div class="h2">Players ordered by current score, click players for details</div>
     <div align="right"><button id="league expand-collapse" class="expand-collapse btn btn-primary">Expand/Collapse All</button></div><br>
     <div id="league-data"></div>
   </div>
+
   <div id="this-week" class="tab-pane fade in this-week">
     <h2 id="week-date"></h2>
     <div id="weekly-schedule"></div>
-
   </div>
+
   <div id="full-schedule" class="tab-pane fade in schedule">
     <h2>Full Schedule for SCL Season 3</h2>
     <div align="right"><button id="schedule expand-collapse" class="expand-collapse btn btn-primary">Expand/Collapse All</button></div><br>
     <div id="schedule"></div>
   </div>
+
   <div id="playoff-results" class="tab-pane fade in results">
     <h2>Playoff and Championship Games</h2>
-    <!-- <div align="right"><button id="schedule expand-collapse" class="expand-collapse btn btn-primary">Expand/Collapse All</button></div><br> -->
     <div id="results"></div>
   </div>
+
+  <div id="help" class="tab-pane fade in results">
+    <h2>Do that voodoo you do</h2>
+    <div id="help-info"></div>
+  </div>
 </div>
+<footer class="bd-footer text-muted">
+  <div class="container">
+    <div class="h4 text-center">
+      SCL Manager was made by <a href="http://www.twitter.com/lthummus" target="_blank">LtHummus</a> and <a href="http://www.twitter.com/aforgottentune" target="_blank">aforgottentune</a>. 
+      SpyParty is being made by Chris Hecker, and is available for purchase <i>right now</i> at <a href="http://www.spyparty.com" target="_blank">SpyParty.com</a>. Special thanks to Wodar and Canadianbacon for style and structure tips, KrazyCaley and Catnip for all-around organizing and friendly prodding, WarningTrack for letting us borrow a corner of spypartyfans.com, and of course Checker.
+    </div>
+  </div>
+</footer>
 <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
 <div id="player-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog" role="document">

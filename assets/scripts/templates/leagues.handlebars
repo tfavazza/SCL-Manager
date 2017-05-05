@@ -6,20 +6,20 @@
 				<h2 class="division-name text-center">
 					{{name}}
 				</h2>
-			</div>				
+			</div>		
 		</span>
 		<div id="collapse{{name}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{name}}">		
-			{{# each players}}
-			<div class="panel-heading h3 alt-color" role="tab" id="heading{{name}}">
-				<span class="col-md-1 flag-icon flag-icon-{{country}}"></span>
-				<div class="col-md-2">
+			{{#each players}}
+			<div class="panel-heading h3 alt-color container-fluid" role="tab" id="heading{{name}}">
+				<span class="col-md-1 col-md-offset-0 col-sm-1 col-sm-offset-0 col-xs-2 col-xs-offset-2 flag-icon flag-icon-{{country}}"></span>
+				<div class="col-md-2 col-sm-3 col-xs-8">
 					 {{name}}
 				</div>
-				<div class="col-md-2">Score {{score}}</div>
-				<div class="col-md-2">Wins {{wins}}</div>
-				<div class="col-md-2">Losses {{losses}}</div>
-				<div class="col-md-2">Draws {{draws}}</div>
-				<button class="btn btn-small btn-info col-md-1" data-target="#player-modal" id="{{name}}" data-toggle="modal">Schedule</button>
+				<div class="col-md-2 col-sm-2 col-xs-3">Score {{score}}</div>
+				<div class="col-md-2 col-sm-2 col-xs-3">Wins {{wins}}</div>
+				<div class="col-md-2 col-sm-2 col-xs-3">Losses {{losses}}</div>
+				<div class="col-md-2 col-sm-2 col-xs-3">Draws {{draws}}</div>
+				<button class="btn btn-small btn-info col-md-1 col-sm-6 col-sm-offset-3 col-md-offset-0 col-xs-6 col-xs-offset-3" data-target="#player-modal" id="{{name}}" data-toggle="modal">Schedule</button>
 				<br>
 			</div>
 			{{/each}}
