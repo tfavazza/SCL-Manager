@@ -83,7 +83,6 @@ const organizeFullSchedule = function(rawSchedule) {
 };
 
 const displayThisWeeksSchedule = function(weeklySchedule) {
-    console.log(weeklySchedule);
   $('#weekly-schedule').html(handlebarsWeek(weeklySchedule));
 };
 
@@ -96,6 +95,10 @@ const displayLeagueDataSuccess = function(data) {
 const zipFileUploadSuccess = function(response) {
     console.log(response);
     $('#confirmation').html(handlebarsConfirmation(response));
+    events.onDisplayLeagueData;
+    events.onDisplayAllSchedule;
+    events.onDisplayWeeklySchedule;
+
 };
 
 const zipFileUploadFailure = function(response) {

@@ -51,15 +51,13 @@ webpackJsonp([0],[
 
 	/* WEBPACK VAR INJECTION */(function($) {'use strict';
 
-	//const app = require('./app.js');
-
 	var api = __webpack_require__(5);
 	var ui = __webpack_require__(7);
 	var toggling = true;
 	var wodarView = false;
 
-	var onDisplayLeagueData = function onDisplayLeagueData(data) {
-	  api.displayLeagueData(data).done(ui.displayLeagueDataSuccess).fail(console.error());
+	var onDisplayLeagueData = function onDisplayLeagueData() {
+	  api.displayLeagueData().done(ui.displayLeagueDataSuccess).fail(console.error());
 	};
 
 	var onWodar = function onWodar(e) {
@@ -136,6 +134,7 @@ webpackJsonp([0],[
 
 	var onDisplayRecap = function onDisplayRecap(event) {
 	  event.preventDefault();
+	  console.log(event.target);
 	  var id = event.target.id;
 	  api.getGameRecap(id).done(ui.displayGameRecap);
 	};
@@ -155,7 +154,10 @@ webpackJsonp([0],[
 	};
 	$(document).ready(ui.displayPlayoffGames);
 	module.exports = {
-	  addHandlers: addHandlers
+	  addHandlers: addHandlers,
+	  onDisplayLeagueData: onDisplayLeagueData,
+	  onDisplayAllSchedule: onDisplayAllSchedule,
+	  onDisplayWeeklySchedule: onDisplayWeeklySchedule
 	};
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
@@ -199,7 +201,6 @@ webpackJsonp([0],[
 	};
 
 	var displayAWeek = function displayAWeek(weekNumber) {
-		console.log(weekNumber);
 		return $.ajax({
 			url: app.host + '/match/week/' + weekNumber,
 			method: 'GET'
@@ -324,7 +325,6 @@ webpackJsonp([0],[
 	};
 
 	var displayThisWeeksSchedule = function displayThisWeeksSchedule(weeklySchedule) {
-	    console.log(weeklySchedule);
 	    $('#weekly-schedule').html(handlebarsWeek(weeklySchedule));
 	};
 
@@ -336,6 +336,9 @@ webpackJsonp([0],[
 	var zipFileUploadSuccess = function zipFileUploadSuccess(response) {
 	    console.log(response);
 	    $('#confirmation').html(handlebarsConfirmation(response));
+	    events.onDisplayLeagueData;
+	    events.onDisplayAllSchedule;
+	    events.onDisplayWeeklySchedule;
 	};
 
 	var zipFileUploadFailure = function zipFileUploadFailure(response) {
@@ -416,7 +419,7 @@ webpackJsonp([0],[
 	    + alias4(((helper = (helper = helpers.losses || (depth0 != null ? depth0.losses : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"losses","hash":{},"data":data}) : helper)))
 	    + "</div>\n				<div class=\"col-md-2 col-sm-2 col-xs-3\">Draws "
 	    + alias4(((helper = (helper = helpers.draws || (depth0 != null ? depth0.draws : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"draws","hash":{},"data":data}) : helper)))
-	    + "</div>\n				<button class=\"btn btn-small btn-info col-md-1 col-sm-6 col-sm-offset-3 col-md-offset-0 col-xs-6 col-xs-offset-3\" data-target=\"#player-modal\" id=\""
+	    + "</div>\n				<button class=\"btn btn-md btn-info col-md-1 col-sm-6 col-sm-offset-3 col-md-offset-0 col-xs-6 col-xs-offset-3\" data-target=\"#player-modal\" id=\""
 	    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
 	    + "\" data-toggle=\"modal\">Schedule</button>\n				<br>\n			</div>\n";
 	},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
@@ -1677,33 +1680,27 @@ webpackJsonp([0],[
 	    + alias2(((helper = (helper = helpers.player2country || (depth0 != null ? depth0.player2country : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias1,{"name":"player2country","hash":{},"data":data}) : helper)))
 	    + "\"></span> \n							<b>"
 	    + alias2(((helper = (helper = helpers.player2 || (depth0 != null ? depth0.player2 : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias1,{"name":"player2","hash":{},"data":data}) : helper)))
-	    + "</b>\n							<div>Game Status: \n"
+	    + "</b>\n							<div>\n"
 	    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.matchUrl : depth0),{"name":"if","hash":{},"fn":container.program(7, data, 0),"inverse":container.program(9, data, 0),"data":data})) != null ? stack1 : "")
-	    + "							</div>\n"
-	    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.completedFlag : depth0),{"name":"if","hash":{},"fn":container.program(11, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-	    + "						</div>\n					</li>\n				</ul>\n";
+	    + "							</div>\n						</div>\n					</li>\n				</ul>\n";
 	},"3":function(container,depth0,helpers,partials,data) {
 	    return " list-group-item-success ";
 	},"5":function(container,depth0,helpers,partials,data) {
 	    return " alt-color ";
 	},"7":function(container,depth0,helpers,partials,data) {
-	    var helper;
+	    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
-	  return "								Complete(<a href=\""
-	    + container.escapeExpression(((helper = (helper = helpers.matchUrl || (depth0 != null ? depth0.matchUrl : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"matchUrl","hash":{},"data":data}) : helper)))
-	    + "\">Download replays</a>) \n";
+	  return "									<a class=\"game-details btn btn-lg btn-success\" data-target=\"#recap-modal\" href=\"\" id=\""
+	    + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
+	    + "\" data-toggle=\"modal\">Completed</a>\n									<a href=\""
+	    + alias4(((helper = (helper = helpers.matchUrl || (depth0 != null ? depth0.matchUrl : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"matchUrl","hash":{},"data":data}) : helper)))
+	    + "\">(Download Replays)</a> \n";
 	},"9":function(container,depth0,helpers,partials,data) {
 	    var helper;
 
-	  return "								"
+	  return "								<button class=\"btn btn-lg\" style=\"cursor:default\">"
 	    + container.escapeExpression(((helper = (helper = helpers.status || (depth0 != null ? depth0.status : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"status","hash":{},"data":data}) : helper)))
-	    + "<br><br><br>\n";
-	},"11":function(container,depth0,helpers,partials,data) {
-	    var helper;
-
-	  return "								<div class=\"game-details btn btn-sm btn-success text-center\" data-target=\"#recap-modal\" id=\""
-	    + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"id","hash":{},"data":data}) : helper)))
-	    + "\" data-toggle=\"modal\">Game Details</button>\n";
+	    + "</button>\n";
 	},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
 	    var stack1;
 
@@ -1733,7 +1730,7 @@ webpackJsonp([0],[
 	    + alias2(alias3(((stack1 = (depth0 != null ? depth0.player2 : depth0)) != null ? stack1.country : stack1), depth0))
 	    + "\"></span> "
 	    + alias2(alias3(((stack1 = (depth0 != null ? depth0.player2 : depth0)) != null ? stack1.name : stack1), depth0))
-	    + "\r\n				<div>\r\n					<b>Game Status:</b>\r\n"
+	    + "\r\n				<div>\r\n"
 	    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.status : depth0),{"name":"if","hash":{},"fn":container.program(6, data, 0),"inverse":container.program(8, data, 0),"data":data})) != null ? stack1 : "")
 	    + "				</div>\r\n			</div>\r\n";
 	},"2":function(container,depth0,helpers,partials,data) {
@@ -1743,13 +1740,13 @@ webpackJsonp([0],[
 	},"6":function(container,depth0,helpers,partials,data) {
 	    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
-	  return "						<span>Completed (<a href=\""
-	    + alias4(((helper = (helper = helpers.matchUrl || (depth0 != null ? depth0.matchUrl : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"matchUrl","hash":{},"data":data}) : helper)))
-	    + "\">Replays</a>) \r\n							<a class=\"game-details\" data-target=\"#recap-modal\" href=\"\" id=\""
+	  return "						<span>\r\n							<a class=\"game-details btn btn-lg btn-success\" data-target=\"#recap-modal\" href=\"\" id=\""
 	    + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
-	    + "\" data-toggle=\"modal\"><b>Game Details</b></a>\r\n						</span>\r\n";
+	    + "\" data-toggle=\"modal\">Completed</a>\r\n							(<a href=\""
+	    + alias4(((helper = (helper = helpers.matchUrl || (depth0 != null ? depth0.matchUrl : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"matchUrl","hash":{},"data":data}) : helper)))
+	    + "\">Download Replays</a>) \r\n						</span>\r\n";
 	},"8":function(container,depth0,helpers,partials,data) {
-	    return "						<span>Not completed</span>\r\n";
+	    return "						<button class=\"btn btn-lg\" style=\"cursor:default\">Not Played</button>\r\n";
 	},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
 	    var stack1;
 
@@ -1767,9 +1764,9 @@ webpackJsonp([0],[
 	module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
 	    var stack1;
 
-	  return "<div class=\"container\">\r\n  <div class=\"alert alert-info\"> \r\n	 <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;\r\n	 </a>\r\n   <strong>Success!</strong> Upload successful.\r\n      <div>Here is some forum-ready text for you to copy</div>\r\n      <br>\r\n      <span class=\"h4 blockquote\"><b>"
+	  return "<div class=\"container\">\r\n  <div class=\"alert alert-info h4\"> \r\n    <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">\r\n      &times;\r\n    </a>\r\n    <div>\r\n      <strong>Success!</strong> Upload successful.\r\n    </div>\r\n    <div>\r\n      Here is some forum-ready text for you to copy:\r\n    </div>\r\n    <div class=\"alt-color text-left\">\r\n      <blockquote>\r\n        "
 	    + ((stack1 = container.lambda((depth0 != null ? depth0.forumPost : depth0), depth0)) != null ? stack1 : "")
-	    + "</b></span>\r\n  </div>\r\n</div>\r\n";
+	    + "\r\n      </blockquote>\r\n    </div>\r\n  </div>\r\n</div>";
 	},"useData":true});
 
 /***/ },

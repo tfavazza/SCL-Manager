@@ -1,13 +1,13 @@
 'use strict';
 
-//const app = require('./app.js');
+
 const api = require('./api.js');
 const ui = require('./ui.js');
 let toggling = true;
 let wodarView = false;
 
-const onDisplayLeagueData = function(data) {
-  api.displayLeagueData(data)
+const onDisplayLeagueData = function() {
+  api.displayLeagueData()
   .done(ui.displayLeagueDataSuccess)
   .fail(console.error());
 };
@@ -93,6 +93,7 @@ const onscrollUp = function(){
 
 const onDisplayRecap = function(event) {
   event.preventDefault();
+  console.log(event.target);
   let id = event.target.id;
   api.getGameRecap(id)
   .done(ui.displayGameRecap)
@@ -115,4 +116,7 @@ const addHandlers = function() {
 $(document).ready(ui.displayPlayoffGames);
 module.exports = {
   addHandlers,
+  onDisplayLeagueData,
+  onDisplayAllSchedule,
+  onDisplayWeeklySchedule,
 };

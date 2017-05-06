@@ -7,13 +7,13 @@
 				<span class="flag-icon flag-icon-{{player1.country}}"></span> {{player1.name}} vs 
 				<span class="flag-icon flag-icon-{{player2.country}}"></span> {{player2.name}}
 				<div>
-					<b>Game Status:</b>
 					{{#if status}}
-						<span>Completed (<a href="{{matchUrl}}">Replays</a>) 
-							<a class="game-details" data-target="#recap-modal" href="" id="{{id}}" data-toggle="modal"><b>Game Details</b></a>
+						<span>
+							<a class="game-details btn btn-lg btn-success" data-target="#recap-modal" href="" id="{{id}}" data-toggle="modal">Completed</a>
+							(<a href="{{matchUrl}}">Download Replays</a>) 
 						</span>
 						{{else}}
-						<span>Not completed</span>
+						<button class="btn btn-lg" style="cursor:default">Not Played</button>
 						{{/if}}
 				</div>
 			</div>

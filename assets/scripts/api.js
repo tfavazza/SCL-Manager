@@ -35,7 +35,6 @@ const displayAllSchedule = function() {
 };
 
 const displayAWeek = function(weekNumber) {
-	console.log(weekNumber);
 	return $.ajax({
 		url: app.host + '/match/week/' + weekNumber,
 		method: 'GET'
