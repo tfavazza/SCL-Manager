@@ -1746,7 +1746,7 @@ webpackJsonp([0],[
 	    + alias4(((helper = (helper = helpers.matchUrl || (depth0 != null ? depth0.matchUrl : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"matchUrl","hash":{},"data":data}) : helper)))
 	    + "\">Download Replays</a>) \r\n						</span>\r\n";
 	},"8":function(container,depth0,helpers,partials,data) {
-	    return "						<button class=\"btn btn-lg\" style=\"cursor:default\">Not Played</button>\r\n";
+	    return "						<button class=\"btn btn-lg\" disabled >Not Played</button>\r\n";
 	},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
 	    var stack1;
 
