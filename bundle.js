@@ -1764,9 +1764,9 @@ webpackJsonp([0],[
 	module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
 	    var stack1;
 
-	  return "<div class=\"container\">\r\n  <div class=\"alert alert-info h4\"> \r\n    <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">\r\n      &times;\r\n    </a>\r\n    <div>\r\n      <strong>Success!</strong> Upload successful.\r\n    </div>\r\n    <div>\r\n      Here is some forum-ready text for you to copy:\r\n    </div>\r\n    <div class=\"alt-color text-left\">\r\n      <blockquote>\r\n        "
+	  return "<div class=\"container\">\r\n  <div class=\"alert alert-info h4\"> \r\n    <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">\r\n      &times;\r\n    </a>\r\n    <div>\r\n      <strong>Success!</strong> Upload successful.\r\n    </div>\r\n    <div>\r\n      Here's some forum-ready text of the results to copy:\r\n    </div>\r\n    <div class=\"alt-color text-left\">\r\n      <blockquote>\r\n        "
 	    + ((stack1 = container.lambda((depth0 != null ? depth0.forumPost : depth0), depth0)) != null ? stack1 : "")
-	    + "\r\n      </blockquote>\r\n    </div>\r\n  </div>\r\n</div>";
+	    + "\r\n      </blockquote>\r\n    </div>\r\n    <a href=\"https://secure.spyparty.com/beta/forums/posting.php?mode=reply&f=10&t=2657\" target=\"_blank\"><u>And here's a link to the forum thread.</u></a>\r\n  </div>\r\n</div>";
 	},"useData":true});
 
 /***/ },
