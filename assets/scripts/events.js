@@ -11,6 +11,7 @@ const onDisplayLeagueData = function() {
   .fail(console.error());
 };
 
+//easter egg
 const onWodar = function(e) {
   e.preventDefault();
   let backgroundHex = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
