@@ -54,7 +54,6 @@ webpackJsonp([0],[
 	var api = __webpack_require__(5);
 	var ui = __webpack_require__(7);
 	var toggling = true;
-	var wodarView = false;
 
 	var onDisplayLeagueData = function onDisplayLeagueData() {
 	  api.displayLeagueData().done(ui.displayLeagueDataSuccess).fail(console.error());
@@ -62,13 +61,12 @@ webpackJsonp([0],[
 
 	var onWodar = function onWodar(e) {
 	  e.preventDefault();
-	  if (wodarView) {
-	    $('.container-fluid').css('background-color', '#00cc00');
-	    wodarView = !wodarView;
-	  } else {
-	    $('.container-fluid').css('background-color', '#336699');
-	    wodarView = !wodarView;
-	  }
+	  var backgroundHex = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
+	  var buttonColor = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
+	  var panelColor = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
+	  $('.container-fluid').css('background-color', backgroundHex);
+	  $('.btn').css('background-color', buttonColor);
+	  $('.panel').css('background-color', panelColor);
 	};
 
 	var onZipFileUpload = function onZipFileUpload(e) {
@@ -1698,9 +1696,9 @@ webpackJsonp([0],[
 	},"9":function(container,depth0,helpers,partials,data) {
 	    var helper;
 
-	  return "								<button class=\"btn btn-lg\" style=\"cursor:default\">"
+	  return "								<button class=\"btn btn-lg\" disabled>"
 	    + container.escapeExpression(((helper = (helper = helpers.status || (depth0 != null ? depth0.status : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"status","hash":{},"data":data}) : helper)))
-	    + "</button>\n";
+	    + " </button>\n";
 	},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
 	    var stack1;
 

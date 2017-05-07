@@ -4,7 +4,6 @@
 const api = require('./api.js');
 const ui = require('./ui.js');
 let toggling = true;
-let wodarView = false;
 
 const onDisplayLeagueData = function() {
   api.displayLeagueData()
@@ -14,13 +13,12 @@ const onDisplayLeagueData = function() {
 
 const onWodar = function(e) {
   e.preventDefault();
-  if (wodarView) {
-    $('.container-fluid').css('background-color', '#00cc00')
-    wodarView = !wodarView
-  } else {
-    $('.container-fluid').css('background-color', '#336699')
-    wodarView = !wodarView
-  }
+  let backgroundHex = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
+  let buttonColor = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
+  let panelColor = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
+  $('.container-fluid').css('background-color', backgroundHex);
+  $('.btn').css('background-color', buttonColor);
+  $('.panel').css('background-color', panelColor);
 }
 
 const onZipFileUpload = function(e) {
