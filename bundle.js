@@ -104,9 +104,12 @@ webpackJsonp([0],[
 	};
 
 	var onDisplayWeeklySchedule = function onDisplayWeeklySchedule() {
-	  var startDate = new Date('2017-05-13');
-	  var today = new Date('2017-05-28');
-	  var leagueWeek = Math.abs(today - startDate) / 86400000;
+	  var startDate = new Date('2017-05-12');
+	  var today = new Date();
+	  var leagueWeek = (today - startDate) / 86400000;
+	  if (leagueWeek < 1) {
+	    leagueWeek = 1;
+	  }
 	  leagueWeek = parseInt(Math.ceil(leagueWeek / 7));
 	  console.log(leagueWeek);
 	  api.displayAWeek(leagueWeek).done(ui.displayThisWeeksSchedule);

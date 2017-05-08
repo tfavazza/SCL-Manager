@@ -62,9 +62,12 @@ const expandOrCollapseAllTabs = function() {
 };
 
 const onDisplayWeeklySchedule = function() {
-  let startDate = new Date('2017-05-13');
-  let today = new Date('2017-05-28');
-  let leagueWeek = Math.abs(today - startDate) / 86400000;
+  let startDate = new Date('2017-05-12');
+  let today = new Date();
+  let leagueWeek = (today - startDate) / 86400000;
+  if (leagueWeek < 1) {
+    leagueWeek = 1;
+  }
   leagueWeek = parseInt(Math.ceil(leagueWeek / 7));
   console.log(leagueWeek);
   api.displayAWeek(leagueWeek)
