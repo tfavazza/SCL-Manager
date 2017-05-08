@@ -10,7 +10,6 @@ const handlebarsRecap = require('../scripts/templates/recap.handlebars');
 
 const getDate = function() {
     let utc = new Date().toJSON().slice(5, 10) + '-' + new Date().toJSON().slice(0,4);
-    $("#date").html(`Last Updated: ${utc}`);
     $("#week-date").html(`For the week of ${utc}`);
 };
 

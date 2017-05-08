@@ -104,10 +104,11 @@ webpackJsonp([0],[
 	};
 
 	var onDisplayWeeklySchedule = function onDisplayWeeklySchedule() {
-	  var startDate = new Date('2017-05-03');
-	  var today = new Date();
+	  var startDate = new Date('2017-05-13');
+	  var today = new Date('2017-05-28');
 	  var leagueWeek = Math.abs(today - startDate) / 86400000;
-	  leagueWeek = parseInt(leagueWeek / 7 + 1);
+	  leagueWeek = parseInt(Math.ceil(leagueWeek / 7));
+	  console.log(leagueWeek);
 	  api.displayAWeek(leagueWeek).done(ui.displayThisWeeksSchedule);
 	};
 
@@ -251,7 +252,6 @@ webpackJsonp([0],[
 
 	var getDate = function getDate() {
 	    var utc = new Date().toJSON().slice(5, 10) + '-' + new Date().toJSON().slice(0, 4);
-	    $("#date").html('Last Updated: ' + utc);
 	    $("#week-date").html('For the week of ' + utc);
 	};
 
