@@ -115,8 +115,8 @@ const addHandlers = function() {
   $(document).ready(ui.getDate);
   $(document).ready(expandOrCollapseAllTabs);
   $('#wodar-button').on('click', onWodar);
+  $(document).ready(ui.displayRules);
 };
-$(document).ready(ui.displayPlayoffGames);
 module.exports = {
   addHandlers,
   onDisplayLeagueData,

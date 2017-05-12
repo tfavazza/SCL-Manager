@@ -7,10 +7,11 @@ const handebarsSchedule = require('../scripts/templates/schedule.handlebars');
 const handlebarsWeek = require('../scripts/templates/week.handlebars');
 const handlebarsConfirmation = require('../scripts/templates/confirmation.handlebars');
 const handlebarsRecap = require('../scripts/templates/recap.handlebars');
+const handlebarsRules = require('../scripts/templates/rules.handlebars');
 
 const getDate = function() {
     let utc = new Date().toJSON().slice(5, 10) + '-' + new Date().toJSON().slice(0,4);
-    $("#week-date").html(`For the week of ${utc}`);
+    $("#week-date").html(`For the week of 05-13-2017`);
 };
 
 const organizeFullSchedule = function(rawSchedule) {
@@ -116,8 +117,8 @@ const showAllScheduleSuccess = function(data) {
     $('#schedule').html(handebarsSchedule(schedule));
 };
 
-const displayPlayoffGames = function() {
-    $('#results').html('<center><div class="h3">Coming Soon!™</div></center>');
+const displayRules = function() {
+    $('#results').html(handlebarsRules);
 }
 
 const displayGameRecap = function(recap) {
@@ -133,6 +134,6 @@ module.exports = {
     zipFileUploadFailure,
     getDate,
     displayThisWeeksSchedule,
-    displayPlayoffGames,
+    displayRules,
     displayGameRecap,
 };
