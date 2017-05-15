@@ -69,7 +69,6 @@ const onDisplayWeeklySchedule = function() {
     leagueWeek = 1;
   }
   leagueWeek = parseInt(Math.ceil(leagueWeek / 7));
-  console.log(leagueWeek);
   api.displayAWeek(leagueWeek)
   .done(ui.displayThisWeeksSchedule);
 };
@@ -102,8 +101,15 @@ const onDisplayRecap = function(event) {
   .done(ui.displayGameRecap)
 }
 
+const onLastUpdated = function() {
+  api.getLastUpdated()
+  .done(ui.displayLastUpdated)
+  .fail();
+}
+
 
 const addHandlers = function() {
+  $(document).ready(onLastUpdated);
   $(document).on('click', '.game-details', onDisplayRecap);
   $(document).ready(onscrollUp);
   $('.division-name').on('click', displayLeagueMembers);

@@ -8,10 +8,10 @@ const handlebarsWeek = require('../scripts/templates/week.handlebars');
 const handlebarsConfirmation = require('../scripts/templates/confirmation.handlebars');
 const handlebarsRecap = require('../scripts/templates/recap.handlebars');
 const handlebarsRules = require('../scripts/templates/rules.handlebars');
-
+const handlebarsLastUpdated = require('../scripts/templates/lastUpdated.handlebars');
 const getDate = function() {
     let utc = new Date().toJSON().slice(5, 10) + '-' + new Date().toJSON().slice(0,4);
-    $("#week-date").html(`For the week of 05-13-2017`);
+    $("#week-date").html(`For the week of ${utc}`);
 };
 
 const organizeFullSchedule = function(rawSchedule) {
@@ -91,6 +91,11 @@ const displayLeagueDataSuccess = function(data) {
     $('#league-data').html(handleBarsLeague(league));
 };
 
+const displayLastUpdated = function(match) {
+  $('#last-updated').html(handlebarsLastUpdated(match));
+  console.log('hello');
+}
+
 
 const zipFileUploadSuccess = function(response) {
     console.log(response);
@@ -136,4 +141,5 @@ module.exports = {
     displayThisWeeksSchedule,
     displayRules,
     displayGameRecap,
+    displayLastUpdated,
 };

@@ -20,6 +20,13 @@ const zipFileUpload = function(data) {
 	});
 };
 
+const getLastUpdated = function() {
+  return $.ajax({
+    url: app.host + '/match/last',
+    method: 'GET',
+  });
+};
+
 const displayPlayerSchedule = function(player) {
 	return $.ajax({
 		url: app.host + '/player/' + player + '/matches',
@@ -55,4 +62,5 @@ module.exports = {
   zipFileUpload,
   displayAWeek,
   getGameRecap,
+  getLastUpdated,
 };

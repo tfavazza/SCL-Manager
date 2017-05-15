@@ -22,8 +22,8 @@
 </center>
 <div class="container">
 <ul class="nav nav-tabs center-block text-center">
-  <li class="active"><a class="active h3 standings-color" data-toggle="tab" href="#standings">Player Standings</a></li>
-  <li><a class= "h3" data-toggle="tab" href="#this-week">Games This Week</a></li>
+  <li class="active"><a class= "h3" data-toggle="tab" href="#this-week">Games This Week</a></li>
+  <li><a class="active h3 standings-color" data-toggle="tab" href="#standings">Player Standings</a></li>
   <li><a class= "h3" data-toggle="tab" href="#full-schedule">Full Schedule</a></li>
   <li><a class= "h3" data-toggle="tab" href="#playoff-results">Venues and Rules</a></li>
   <li><a class= "h3" data-toggle="tab" href="#help">How-To Guide</a></li>
@@ -31,15 +31,17 @@
 </div>
 
 <div class="tab-content container">
-  <div id="standings" class="tab-pane fade in active">
+
+  <div id="this-week" class="tab-pane fade in this-week  active">
+    <h2 id="week-date"></h2>
+    <div class="h3" id="last-updated"></div>
+    <div id="weekly-schedule"></div>
+  </div>
+
+  <div id="standings" class="tab-pane fade in">
     <div class="h2">Players ordered by current score, click schedule for details</div>
     <div align="right"><button id="league expand-collapse" class="expand-collapse btn btn-lg btn-primary">Expand/Collapse All</button></div><br>
     <div id="league-data"></div>
-  </div>
-
-  <div id="this-week" class="tab-pane fade in this-week">
-    <h2 id="week-date"></h2>
-    <div id="weekly-schedule"></div>
   </div>
 
   <div id="full-schedule" class="tab-pane fade in schedule">
@@ -78,7 +80,7 @@
 <footer class="bd-footer text-muted">
   <div class="container">
     <div class="h4 text-center">
-      SCL Manager was made by <a href="http://www.twitter.com/lthummus" target="_blank">LtHummus</a> and <a href="http://www.twitter.com/aforgottentune" target="_blank">aforgottentune</a>. 
+      SCL Manager was made by <a href="http://www.twitter.com/lthummus" target="_blank">LtHummus</a> and <a href="http://www.twitter.com/aforgottentune" target="_blank">aforgottentune</a>.
       SpyParty is being made by Chris Hecker, and is available for purchase <i>right now</i> at <a href="http://www.spyparty.com" target="_blank">SpyParty.com</a>. Special thanks to  <span id="wodar-button" class="btn btn-lg btn-danger align-top">Wodar</span> and Canadianbacon for style and structure tips, KrazyCaley and Catnip for all-around organizing and friendly prodding, WarningTrack for letting us borrow a corner of spypartyfans.com, and of course Checker.
     </div>
   </div>
