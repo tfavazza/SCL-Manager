@@ -62,7 +62,7 @@ const expandOrCollapseAllTabs = function() {
 };
 
 const onDisplayWeeklySchedule = function() {
-  let startDate = new Date('2017-05-12');
+  let startDate = new Date('2017-05-14');
   let today = new Date();
   let leagueWeek = (today - startDate) / 86400000;
   if (leagueWeek < 1) {
