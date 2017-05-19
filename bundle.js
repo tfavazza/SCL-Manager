@@ -164,7 +164,8 @@ webpackJsonp([0],[
 	  addHandlers: addHandlers,
 	  onDisplayLeagueData: onDisplayLeagueData,
 	  onDisplayAllSchedule: onDisplayAllSchedule,
-	  onDisplayWeeklySchedule: onDisplayWeeklySchedule
+	  onDisplayWeeklySchedule: onDisplayWeeklySchedule,
+	  onLastUpdated: onLastUpdated
 	};
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
@@ -350,7 +351,6 @@ webpackJsonp([0],[
 
 	var displayLastUpdated = function displayLastUpdated(match) {
 	    $('#last-updated').html(handlebarsLastUpdated(match));
-	    console.log('hello');
 	};
 
 	var zipFileUploadSuccess = function zipFileUploadSuccess(response) {
@@ -359,6 +359,7 @@ webpackJsonp([0],[
 	    events.onDisplayLeagueData;
 	    events.onDisplayAllSchedule;
 	    events.onDisplayWeeklySchedule;
+	    events.onLastUpdated;
 	};
 
 	var zipFileUploadFailure = function zipFileUploadFailure(response) {

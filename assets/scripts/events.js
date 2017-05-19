@@ -128,4 +128,5 @@ module.exports = {
   onDisplayLeagueData,
   onDisplayAllSchedule,
   onDisplayWeeklySchedule,
+  onLastUpdated,
 };

@@ -93,7 +93,6 @@ const displayLeagueDataSuccess = function(data) {
 
 const displayLastUpdated = function(match) {
   $('#last-updated').html(handlebarsLastUpdated(match));
-  console.log('hello');
 }
 
 
@@ -103,6 +102,7 @@ const zipFileUploadSuccess = function(response) {
     events.onDisplayLeagueData;
     events.onDisplayAllSchedule;
     events.onDisplayWeeklySchedule;
+    events.onLastUpdated;
 
 };
 
