@@ -3,6 +3,7 @@
 
 const api = require('./api.js');
 const ui = require('./ui.js');
+const startDate =  new Date('2017-05-13');
 let toggling = true;
 
 const onDisplayLeagueData = function() {
@@ -61,17 +62,32 @@ const expandOrCollapseAllTabs = function() {
   });
 };
 
+const getDate = function() {
+    let convertedDate = new Date() - new Date().getTimezoneOffset();
+    let utc = Date(convertedDate).slice(0,10);
+    return utc;
+};
+
+const onWeekOf = function() {
+  let utc = getDate();
+  let currentWeek = onGetCurrentWeek()
+  $("#week-date").html(`${utc}: Week ${currentWeek}`);  
+}
+
 const onDisplayWeeklySchedule = function() {
-  let startDate = new Date('2017-05-14');
-  let today = new Date();
-  let leagueWeek = (today - startDate) / 86400000;
-  if (leagueWeek < 1) {
-    leagueWeek = 1;
-  }
-  leagueWeek = parseInt(Math.ceil(leagueWeek / 7));
+  let leagueWeek = onGetCurrentWeek();
   api.displayAWeek(leagueWeek)
   .done(ui.displayThisWeeksSchedule);
 };
+
+
+const onGetCurrentWeek = function() {
+  let utcDay = new Date();
+  let today = utcDay - new Date().getTimezoneOffset();
+  let leagueWeek = (today - startDate) / 86400000;
+  leagueWeek = parseInt(Math.ceil(leagueWeek / 7));
+  return leagueWeek;
+}
 
 const onscrollUp = function(){
   $(window).scroll(function () {
@@ -118,10 +134,11 @@ const addHandlers = function() {
   $(document).ready(onDisplayAllSchedule);
   $(document).ready(onDisplayWeeklySchedule);
   $(document).on('click', '.btn-info', onDisplayPlayerSchedule);
-  $(document).ready(ui.getDate);
+  $(document).ready(getDate);
   $(document).ready(expandOrCollapseAllTabs);
   $('#wodar-button').on('click', onWodar);
   $(document).ready(ui.displayRules);
+  $(document).ready(onWeekOf);
 };
 module.exports = {
   addHandlers,
@@ -129,4 +146,6 @@ module.exports = {
   onDisplayAllSchedule,
   onDisplayWeeklySchedule,
   onLastUpdated,
+  getDate,
+  onGetCurrentWeek,
 };

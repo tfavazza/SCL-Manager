@@ -53,6 +53,7 @@ webpackJsonp([0],[
 
 	var api = __webpack_require__(5);
 	var ui = __webpack_require__(7);
+	var startDate = new Date('2017-05-13');
 	var toggling = true;
 
 	var onDisplayLeagueData = function onDisplayLeagueData() {
@@ -103,15 +104,29 @@ webpackJsonp([0],[
 	  });
 	};
 
+	var getDate = function getDate() {
+	  var convertedDate = new Date() - new Date().getTimezoneOffset();
+	  var utc = Date(convertedDate).slice(0, 10);
+	  return utc;
+	};
+
+	var onWeekOf = function onWeekOf() {
+	  var utc = getDate();
+	  var currentWeek = onGetCurrentWeek();
+	  $("#week-date").html(utc + ': Week ' + currentWeek);
+	};
+
 	var onDisplayWeeklySchedule = function onDisplayWeeklySchedule() {
-	  var startDate = new Date('2017-05-14');
-	  var today = new Date();
-	  var leagueWeek = (today - startDate) / 86400000;
-	  if (leagueWeek < 1) {
-	    leagueWeek = 1;
-	  }
-	  leagueWeek = parseInt(Math.ceil(leagueWeek / 7));
+	  var leagueWeek = onGetCurrentWeek();
 	  api.displayAWeek(leagueWeek).done(ui.displayThisWeeksSchedule);
+	};
+
+	var onGetCurrentWeek = function onGetCurrentWeek() {
+	  var utcDay = new Date();
+	  var today = utcDay - new Date().getTimezoneOffset();
+	  var leagueWeek = (today - startDate) / 86400000;
+	  leagueWeek = parseInt(Math.ceil(leagueWeek / 7));
+	  return leagueWeek;
 	};
 
 	var onscrollUp = function onscrollUp() {
@@ -155,17 +170,20 @@ webpackJsonp([0],[
 	  $(document).ready(onDisplayAllSchedule);
 	  $(document).ready(onDisplayWeeklySchedule);
 	  $(document).on('click', '.btn-info', onDisplayPlayerSchedule);
-	  $(document).ready(ui.getDate);
+	  $(document).ready(getDate);
 	  $(document).ready(expandOrCollapseAllTabs);
 	  $('#wodar-button').on('click', onWodar);
 	  $(document).ready(ui.displayRules);
+	  $(document).ready(onWeekOf);
 	};
 	module.exports = {
 	  addHandlers: addHandlers,
 	  onDisplayLeagueData: onDisplayLeagueData,
 	  onDisplayAllSchedule: onDisplayAllSchedule,
 	  onDisplayWeeklySchedule: onDisplayWeeklySchedule,
-	  onLastUpdated: onLastUpdated
+	  onLastUpdated: onLastUpdated,
+	  getDate: getDate,
+	  onGetCurrentWeek: onGetCurrentWeek
 	};
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
@@ -267,10 +285,7 @@ webpackJsonp([0],[
 	var handlebarsRecap = __webpack_require__(32);
 	var handlebarsRules = __webpack_require__(33);
 	var handlebarsLastUpdated = __webpack_require__(34);
-	var getDate = function getDate() {
-	    var utc = new Date().toJSON().slice(5, 10) + '-' + new Date().toJSON().slice(0, 4);
-	    $("#week-date").html('For the week of ' + utc);
-	};
+	var startDate = new Date('2017-05-13');
 
 	var organizeFullSchedule = function organizeFullSchedule(rawSchedule) {
 	    var fixedSchedule = {
@@ -296,7 +311,8 @@ webpackJsonp([0],[
 	            "player2country": rawSchedule[week].player2.country,
 	            "status": "Not played",
 	            "completedFlag": rawSchedule[week].status,
-	            "matchUrl": rawSchedule[week].matchUrl
+	            "matchUrl": rawSchedule[week].matchUrl,
+	            "weekdate": null
 	        };
 	        if (rawSchedule[week].status === 1) {
 	            weekSchedule.status = "Completed";
@@ -336,6 +352,10 @@ webpackJsonp([0],[
 	                fixedSchedule["Week-10"].push(buildAWeek(i));
 	                break;
 	        }
+	    }
+	    // adds dates to the week button
+	    for (var _i = 1; _i < 11; _i++) {
+	        fixedSchedule["Week-" + _i][0]["weekdate"] = new Date(startDate.setDate(startDate.getDate() + 1)).toString().slice(3, 10) + ' \n        - ' + new Date(startDate.setDate(startDate.getDate() + 6)).toString().slice(3, 10);
 	    }
 	    return fixedSchedule;
 	};
@@ -392,7 +412,6 @@ webpackJsonp([0],[
 	    showAllScheduleSuccess: showAllScheduleSuccess,
 	    zipFileUploadSuccess: zipFileUploadSuccess,
 	    zipFileUploadFailure: zipFileUploadFailure,
-	    getDate: getDate,
 	    displayThisWeeksSchedule: displayThisWeeksSchedule,
 	    displayRules: displayRules,
 	    displayGameRecap: displayGameRecap,
@@ -1668,43 +1687,45 @@ webpackJsonp([0],[
 	var Handlebars = __webpack_require__(9);
 	function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
 	module.exports = (Handlebars["default"] || Handlebars).template({"1":function(container,depth0,helpers,partials,data) {
-	    var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+	    var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression, alias5=container.lambda;
 
-	  return "	<div class=\"panel panel-primary col-md-12 col-sm-12 .lead\">\r\n		<span style=\"cursor: pointer\" class=\"panel-primary\" data-toggle=\"collapse\" href=\"#collapse"
+	  return "	<div class=\"panel panel-primary col-md-12 col-sm-12 .lead\">\n		<span style=\"cursor: pointer\" class=\"panel-primary\" data-toggle=\"collapse\" href=\"#collapse"
 	    + alias4(((helper = (helper = helpers.key || (data && data.key)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"key","hash":{},"data":data}) : helper)))
 	    + "\" aria-expanded=\"true\" aria-controls=\"collapse"
 	    + alias4(((helper = (helper = helpers.key || (data && data.key)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"key","hash":{},"data":data}) : helper)))
-	    + "\">\r\n			<div class=\"panel-heading row\" role=\"tab\" id=\"heading"
+	    + "\">\n			<div class=\"panel-heading row\" role=\"tab\" id=\"heading"
 	    + alias4(((helper = (helper = helpers.key || (data && data.key)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"key","hash":{},"data":data}) : helper)))
-	    + "\">\r\n				<h2 class=\"division-name text-center\">\r\n					Week "
-	    + alias4(container.lambda(((stack1 = (depth0 != null ? depth0["0"] : depth0)) != null ? stack1.week : stack1), depth0))
-	    + "\r\n				</h2>\r\n			</div>\r\n		</span>\r\n		<div id=\"collapse"
+	    + "\">\n				<h2 class=\"division-name text-center\">\n					Week "
+	    + alias4(alias5(((stack1 = (depth0 != null ? depth0["0"] : depth0)) != null ? stack1.week : stack1), depth0))
+	    + " "
+	    + alias4(alias5(((stack1 = (depth0 != null ? depth0["0"] : depth0)) != null ? stack1.weekdate : stack1), depth0))
+	    + "\n				</h2>\n			</div>\n		</span>\n		<div id=\"collapse"
 	    + alias4(((helper = (helper = helpers.key || (data && data.key)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"key","hash":{},"data":data}) : helper)))
 	    + "\" class=\"panel-collapse collapse\" role=\"tabpanel\" aria-labelledby=\"heading"
 	    + alias4(((helper = (helper = helpers.key || (data && data.key)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"key","hash":{},"data":data}) : helper)))
-	    + "\">\r\n"
+	    + "\">\n"
 	    + ((stack1 = helpers.each.call(alias1,depth0,{"name":"each","hash":{},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-	    + "		</div>\r\n	</div>\r\n";
+	    + "		</div>\n	</div>\n";
 	},"2":function(container,depth0,helpers,partials,data) {
 	    var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=container.escapeExpression, alias3=helpers.helperMissing, alias4="function";
 
-	  return "				<ul class=\"list-group\">\r\n					<li class=\"list-group-item "
+	  return "				<ul class=\"list-group\">\n					<li class=\"list-group-item "
 	    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.completedFlag : depth0),{"name":"if","hash":{},"fn":container.program(3, data, 0),"inverse":container.program(5, data, 0),"data":data})) != null ? stack1 : "")
-	    + " col-lg-4 col-md-12 col-sm-12\">\r\n						<div class=\"h4 col-lg-12\" role=\"tab\" id=\"heading"
+	    + " col-lg-4 col-md-12 col-sm-12\">\n						<div class=\"h4 col-lg-12\" role=\"tab\" id=\"heading"
 	    + alias2(container.lambda(depth0, depth0))
-	    + "\">\r\n							<div><b>"
+	    + "\">\n							<div><b>"
 	    + alias2(((helper = (helper = helpers.league || (depth0 != null ? depth0.league : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias1,{"name":"league","hash":{},"data":data}) : helper)))
-	    + "</b></div>\r\n							<span class=\"flag-icon flag-icon-"
+	    + "</b></div>\n							<span class=\"flag-icon flag-icon-"
 	    + alias2(((helper = (helper = helpers.player1country || (depth0 != null ? depth0.player1country : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias1,{"name":"player1country","hash":{},"data":data}) : helper)))
-	    + "\"></span> \r\n							<b>"
+	    + "\"></span> \n							<b>"
 	    + alias2(((helper = (helper = helpers.player1 || (depth0 != null ? depth0.player1 : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias1,{"name":"player1","hash":{},"data":data}) : helper)))
-	    + "</b> vs \r\n							<span class=\"flag-icon flag-icon-"
+	    + "</b> vs \n							<span class=\"flag-icon flag-icon-"
 	    + alias2(((helper = (helper = helpers.player2country || (depth0 != null ? depth0.player2country : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias1,{"name":"player2country","hash":{},"data":data}) : helper)))
-	    + "\"></span> \r\n							<b>"
+	    + "\"></span> \n							<b>"
 	    + alias2(((helper = (helper = helpers.player2 || (depth0 != null ? depth0.player2 : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias1,{"name":"player2","hash":{},"data":data}) : helper)))
-	    + "</b>\r\n							<div>\r\n"
+	    + "</b>\n							<div>\n"
 	    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.matchUrl : depth0),{"name":"if","hash":{},"fn":container.program(7, data, 0),"inverse":container.program(9, data, 0),"data":data})) != null ? stack1 : "")
-	    + "							</div>\r\n						</div>\r\n					</li>\r\n				</ul>\r\n";
+	    + "							</div>\n						</div>\n					</li>\n				</ul>\n";
 	},"3":function(container,depth0,helpers,partials,data) {
 	    return " list-group-item-success ";
 	},"5":function(container,depth0,helpers,partials,data) {
@@ -1714,21 +1735,21 @@ webpackJsonp([0],[
 
 	  return "									<a class=\"game-details btn btn-lg btn-success\" data-target=\"#recap-modal\" href=\"\" id=\""
 	    + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
-	    + "\" data-toggle=\"modal\">Completed</a>\r\n									<a href=\""
+	    + "\" data-toggle=\"modal\">Completed</a>\n									<a href=\""
 	    + alias4(((helper = (helper = helpers.matchUrl || (depth0 != null ? depth0.matchUrl : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"matchUrl","hash":{},"data":data}) : helper)))
-	    + "\">(Download Replays)</a> \r\n";
+	    + "\">(Download Replays)</a> \n";
 	},"9":function(container,depth0,helpers,partials,data) {
 	    var helper;
 
 	  return "								<button class=\"btn btn-lg\" disabled>"
 	    + container.escapeExpression(((helper = (helper = helpers.status || (depth0 != null ? depth0.status : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"status","hash":{},"data":data}) : helper)))
-	    + " </button>\r\n";
+	    + " </button>\n";
 	},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
 	    var stack1;
 
-	  return "<div id=\"accordion\" role=\"tablist\" aria-multiselectable=\"true\">\r\n"
+	  return "<div id=\"accordion\" role=\"tablist\" aria-multiselectable=\"true\">\n"
 	    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},depth0,{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-	    + "</div>\r\n";
+	    + "</div>\n";
 	},"useData":true});
 
 /***/ },

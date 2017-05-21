@@ -9,10 +9,7 @@ const handlebarsConfirmation = require('../scripts/templates/confirmation.handle
 const handlebarsRecap = require('../scripts/templates/recap.handlebars');
 const handlebarsRules = require('../scripts/templates/rules.handlebars');
 const handlebarsLastUpdated = require('../scripts/templates/lastUpdated.handlebars');
-const getDate = function() {
-    let utc = new Date().toJSON().slice(5, 10) + '-' + new Date().toJSON().slice(0,4);
-    $("#week-date").html(`For the week of ${utc}`);
-};
+const startDate =  new Date('2017-05-13');
 
 const organizeFullSchedule = function(rawSchedule) {
     let  fixedSchedule = {
@@ -38,7 +35,8 @@ const organizeFullSchedule = function(rawSchedule) {
             "player2country": rawSchedule[week].player2.country,
             "status": "Not played",
             "completedFlag": rawSchedule[week].status,
-            "matchUrl": rawSchedule[week].matchUrl
+            "matchUrl": rawSchedule[week].matchUrl,
+            "weekdate": null,
         };
         if(rawSchedule[week].status === 1) {
         	weekSchedule.status = "Completed";
@@ -48,7 +46,7 @@ const organizeFullSchedule = function(rawSchedule) {
     for (let i = 0; i < rawSchedule.length; i++) {
         switch (rawSchedule[i].week) {
             case 1:
-                fixedSchedule["Week-1"].push(buildAWeek(i));
+            fixedSchedule["Week-1"].push(buildAWeek(i));
                 break;
             case 2:
                 fixedSchedule["Week-2"].push(buildAWeek(i));
@@ -79,6 +77,12 @@ const organizeFullSchedule = function(rawSchedule) {
                 break;
         }
     }
+    // adds dates to the week button
+    for (let i = 1; i < 11; i++) {
+        fixedSchedule["Week-" + i][0]["weekdate"] = 
+        `${new Date(startDate.setDate(startDate.getDate() + 1)).toString().slice(3,10)} 
+        - ${new Date(startDate.setDate(startDate.getDate() + 6)).toString().slice(3,10)}`
+     }
     return fixedSchedule;
 };
 
@@ -137,7 +141,6 @@ module.exports = {
     showAllScheduleSuccess,
     zipFileUploadSuccess,
     zipFileUploadFailure,
-    getDate,
     displayThisWeeksSchedule,
     displayRules,
     displayGameRecap,
