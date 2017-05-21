@@ -1896,7 +1896,7 @@ webpackJsonp([0],[
 	var Handlebars = __webpack_require__(9);
 	function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
 	module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-	    return "<div class=\"h2\">Week 1 Highlights</div>\r\n<iframe \r\n  src=\"https://player.twitch.tv/?video=v145518033&autoplay=false\" \r\n  frameborder=\"0\" \r\n  allowfullscreen=\"true\" \r\n  scrolling=\"no\" \r\n  height=\"720\" \r\n  width=\"1280\">\r\n</iframe>";
+	    return "<div class=\"h2\">Week 1 Highlights</div>\r\n<iframe \r\n  src=\"https://player.twitch.tv/?video=v145518033&autoplay=false\" \r\n  frameborder=\"0\" \r\n  allowfullscreen=\"true\" \r\n  scrolling=\"no\" \r\n  height=\"360\" \r\n  width=\"640\">\r\n</iframe>";
 	},"useData":true});
 
 /***/ },
