@@ -139,6 +139,7 @@ const addHandlers = function() {
   $('#wodar-button').on('click', onWodar);
   $(document).ready(ui.displayRules);
   $(document).ready(onWeekOf);
+  $(document).ready(ui.displayTwitchVideos);
 };
 module.exports = {
   addHandlers,
