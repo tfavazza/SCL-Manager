@@ -1677,7 +1677,7 @@ webpackJsonp([0],[
 	},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
 	    var stack1;
 
-	  return "<blockquote class=\"alt-color\">\r\n"
+	  return "<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">CLOSE</span></button>\r\n<blockquote class=\"alt-color\">\r\n"
 	    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},depth0,{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
 	    + "</blockquote>\r\n";
 	},"useData":true});
@@ -1854,7 +1854,7 @@ webpackJsonp([0],[
 	},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
 	    var stack1, helper, alias1=depth0 != null ? depth0 : {};
 
-	  return "<div class=\"alt-color\">\r\n  <blockquote>\r\n    <div class=\"text-center h2\">"
+	  return "<div class=\"alt-color\">\r\n  <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">CLOSE</span></button>\r\n  <blockquote>\r\n    <div class=\"text-center h2\">"
 	    + container.escapeExpression(((helper = (helper = helpers.scoreSummary || (depth0 != null ? depth0.scoreSummary : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(alias1,{"name":"scoreSummary","hash":{},"data":data}) : helper)))
 	    + "</div>\r\n"
 	    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.draft : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.program(6, data, 0),"data":data})) != null ? stack1 : "")
