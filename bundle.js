@@ -280,7 +280,6 @@ webpackJsonp([0],[
 
 	var app = {
 	  host: 'https://scl.spypartyfans.com/api'
-	  //host: 'http://benremoteaccess.com:41515/api'
 	};
 
 	module.exports = app;
@@ -327,15 +326,20 @@ webpackJsonp([0],[
 	            "player2country": rawSchedule[week].player2.country,
 	            "status": "Not played",
 	            "completedFlag": rawSchedule[week].status,
+	            "forfeitFlag": null,
 	            "matchUrl": rawSchedule[week].matchUrl,
 	            "weekdate": null,
-	            "forfeitWinner": rawSchedule[week].forfeitWinner,
-	            "forfeitText": rawSchedule[week].forfeitText
+	            "forfeitWinner": '',
+	            "forfeitText": ''
 	        };
 	        if (rawSchedule[week].status === 1) {
 	            weekSchedule.status = "Completed";
 	        } else if (rawSchedule[week].status === 2) {
+	            weekSchedule.forfeitFlag = 1;
+	            weekSchedule.completedFlag = 1;
 	            weekSchedule.status = "Forfeited";
+	            weekSchedule.forfeitWinner = rawSchedule[week].forfeitWinner;
+	            weekSchedule.forfeitText = rawSchedule[week].forfeitText;
 	        }
 	        return weekSchedule;
 	    };
@@ -1724,9 +1728,11 @@ webpackJsonp([0],[
 	},"2":function(container,depth0,helpers,partials,data) {
 	    var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=container.escapeExpression, alias3=helpers.helperMissing, alias4="function";
 
-	  return "				<ul class=\"list-group\">\r\n					<li class=\"list-group-item "
+	  return "				<ul class=\"list-group\">\r\n					<li class=\"list-group-item\r\n						"
 	    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.completedFlag : depth0),{"name":"if","hash":{},"fn":container.program(3, data, 0),"inverse":container.program(5, data, 0),"data":data})) != null ? stack1 : "")
-	    + " col-lg-4 col-md-12 col-sm-12\">\r\n						<div class=\"h4 col-lg-12\" role=\"tab\" id=\"heading"
+	    + "\r\n						"
+	    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.forfeitFlag : depth0),{"name":"if","hash":{},"fn":container.program(7, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+	    + "\r\n							col-lg-4 col-md-12 col-sm-12\">\r\n						<div class=\"h4 col-lg-12\" role=\"tab\" id=\"heading"
 	    + alias2(container.lambda(depth0, depth0))
 	    + "\">\r\n							<div><b>"
 	    + alias2(((helper = (helper = helpers.league || (depth0 != null ? depth0.league : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias1,{"name":"league","hash":{},"data":data}) : helper)))
@@ -1739,13 +1745,16 @@ webpackJsonp([0],[
 	    + "\"></span> \r\n							<b>"
 	    + alias2(((helper = (helper = helpers.player2 || (depth0 != null ? depth0.player2 : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias1,{"name":"player2","hash":{},"data":data}) : helper)))
 	    + "</b>\r\n							<div>\r\n"
-	    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.matchUrl : depth0),{"name":"if","hash":{},"fn":container.program(7, data, 0),"inverse":container.program(9, data, 0),"data":data})) != null ? stack1 : "")
+	    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.matchUrl : depth0),{"name":"if","hash":{},"fn":container.program(9, data, 0),"inverse":container.program(11, data, 0),"data":data})) != null ? stack1 : "")
+	    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.forfeitFlag : depth0),{"name":"if","hash":{},"fn":container.program(13, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
 	    + "							</div>\r\n						</div>\r\n					</li>\r\n				</ul>\r\n";
 	},"3":function(container,depth0,helpers,partials,data) {
-	    return " list-group-item-success ";
+	    return " list-group-item-success\r\n						";
 	},"5":function(container,depth0,helpers,partials,data) {
 	    return " alt-color ";
 	},"7":function(container,depth0,helpers,partials,data) {
+	    return " list-group-item-danger ";
+	},"9":function(container,depth0,helpers,partials,data) {
 	    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
 	  return "									<a class=\"game-details btn btn-lg btn-success\" data-target=\"#recap-modal\" href=\"\" id=\""
@@ -1753,12 +1762,18 @@ webpackJsonp([0],[
 	    + "\" data-toggle=\"modal\">Completed</a>\r\n									<a href=\""
 	    + alias4(((helper = (helper = helpers.matchUrl || (depth0 != null ? depth0.matchUrl : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"matchUrl","hash":{},"data":data}) : helper)))
 	    + "\">(Download Replays)</a> \r\n";
-	},"9":function(container,depth0,helpers,partials,data) {
+	},"11":function(container,depth0,helpers,partials,data) {
 	    var helper;
 
 	  return "								<button class=\"btn btn-lg\" disabled>"
 	    + container.escapeExpression(((helper = (helper = helpers.status || (depth0 != null ? depth0.status : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"status","hash":{},"data":data}) : helper)))
 	    + " </button>\r\n";
+	},"13":function(container,depth0,helpers,partials,data) {
+	    var helper;
+
+	  return "								<span>"
+	    + container.escapeExpression(((helper = (helper = helpers.forfeitWinner || (depth0 != null ? depth0.forfeitWinner : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"forfeitWinner","hash":{},"data":data}) : helper)))
+	    + " wins</span>\r\n";
 	},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
 	    var stack1;
 
@@ -1778,7 +1793,9 @@ webpackJsonp([0],[
 
 	  return "		<li class=\"week-tabs h4 list-group-item "
 	    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.status : depth0),{"name":"if","hash":{},"fn":container.program(2, data, 0),"inverse":container.program(4, data, 0),"data":data})) != null ? stack1 : "")
-	    + " col-md-12 col-sm-12 col-lg-4\">\r\n			<div class=\"panel-heading\" role=\"tab\" id=\"heading\">\r\n				<div class=\"center-text\"><strong>"
+	    + " "
+	    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.forfeitWinner : depth0),{"name":"if","hash":{},"fn":container.program(6, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+	    + "col-md-12 col-sm-12 col-lg-4\">\r\n			<div class=\"panel-heading\" role=\"tab\" id=\"heading\">\r\n				<div class=\"center-text\"><strong>"
 	    + alias2(((helper = (helper = helpers.league || (depth0 != null ? depth0.league : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(alias1,{"name":"league","hash":{},"data":data}) : helper)))
 	    + "</strong></div>\r\n				<span class=\"flag-icon flag-icon-"
 	    + alias2(alias3(((stack1 = (depth0 != null ? depth0.player1 : depth0)) != null ? stack1.country : stack1), depth0))
@@ -1789,21 +1806,55 @@ webpackJsonp([0],[
 	    + "\"></span> "
 	    + alias2(alias3(((stack1 = (depth0 != null ? depth0.player2 : depth0)) != null ? stack1.name : stack1), depth0))
 	    + "\r\n				<div>\r\n"
-	    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.status : depth0),{"name":"if","hash":{},"fn":container.program(6, data, 0),"inverse":container.program(8, data, 0),"data":data})) != null ? stack1 : "")
+	    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.status : depth0),{"name":"if","hash":{},"fn":container.program(8, data, 0),"inverse":container.program(23, data, 0),"data":data})) != null ? stack1 : "")
 	    + "				</div>\r\n			</div>\r\n";
 	},"2":function(container,depth0,helpers,partials,data) {
 	    return "list-group-item-success";
 	},"4":function(container,depth0,helpers,partials,data) {
 	    return "alt-color";
 	},"6":function(container,depth0,helpers,partials,data) {
-	    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
-
-	  return "						<span>\r\n							<a class=\"game-details btn btn-lg btn-success\" data-target=\"#recap-modal\" href=\"\" id=\""
-	    + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
-	    + "\" data-toggle=\"modal\">Completed</a>\r\n							(<a href=\""
-	    + alias4(((helper = (helper = helpers.matchUrl || (depth0 != null ? depth0.matchUrl : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"matchUrl","hash":{},"data":data}) : helper)))
-	    + "\">Download Replays</a>) \r\n						</span>\r\n";
+	    return "list-group-item-danger ";
 	},"8":function(container,depth0,helpers,partials,data) {
+	    var stack1, alias1=depth0 != null ? depth0 : {};
+
+	  return "						<span>\r\n							<a class=\"game-details btn btn-lg btn-success "
+	    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.forfeitWinner : depth0),{"name":"if","hash":{},"fn":container.program(9, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+	    + "\" "
+	    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.forfeitWinner : depth0),{"name":"if","hash":{},"fn":container.program(11, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+	    + " "
+	    + ((stack1 = helpers.unless.call(alias1,(depth0 != null ? depth0.forfeitWinner : depth0),{"name":"unless","hash":{},"fn":container.program(13, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+	    + ">"
+	    + ((stack1 = helpers.unless.call(alias1,(depth0 != null ? depth0.forfeitWinner : depth0),{"name":"unless","hash":{},"fn":container.program(15, data, 0),"inverse":container.program(17, data, 0),"data":data})) != null ? stack1 : "")
+	    + "</a>\r\n"
+	    + ((stack1 = helpers.unless.call(alias1,(depth0 != null ? depth0.forfeitWinner : depth0),{"name":"unless","hash":{},"fn":container.program(19, data, 0),"inverse":container.program(21, data, 0),"data":data})) != null ? stack1 : "")
+	    + "						</span>\r\n";
+	},"9":function(container,depth0,helpers,partials,data) {
+	    return "btn-danger";
+	},"11":function(container,depth0,helpers,partials,data) {
+	    return "disabled";
+	},"13":function(container,depth0,helpers,partials,data) {
+	    var helper;
+
+	  return "data-target=\"#recap-modal\" href=\"\" id=\""
+	    + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"id","hash":{},"data":data}) : helper)))
+	    + "\" data-toggle=\"modal\"";
+	},"15":function(container,depth0,helpers,partials,data) {
+	    return "Completed ";
+	},"17":function(container,depth0,helpers,partials,data) {
+	    return "Forfeited";
+	},"19":function(container,depth0,helpers,partials,data) {
+	    var helper;
+
+	  return "							(<a href=\""
+	    + container.escapeExpression(((helper = (helper = helpers.matchUrl || (depth0 != null ? depth0.matchUrl : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"matchUrl","hash":{},"data":data}) : helper)))
+	    + "\">Download Replays</a>) \r\n";
+	},"21":function(container,depth0,helpers,partials,data) {
+	    var helper;
+
+	  return "							"
+	    + container.escapeExpression(((helper = (helper = helpers.forfeitWinner || (depth0 != null ? depth0.forfeitWinner : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"forfeitWinner","hash":{},"data":data}) : helper)))
+	    + " Wins\r\n";
+	},"23":function(container,depth0,helpers,partials,data) {
 	    return "						<button class=\"btn btn-lg\" disabled >Not Played</button>\r\n";
 	},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
 	    var stack1;

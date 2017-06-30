@@ -1,7 +1,7 @@
 <div class="alt-color">
 	<ul class="list-group">
 		{{#each this}}
-		<li class="week-tabs h4 list-group-item {{#if status}}list-group-item-success{{else}}alt-color{{/if}} col-md-12 col-sm-12 col-lg-4">
+		<li class="week-tabs h4 list-group-item {{#if status}}list-group-item-success{{else}}alt-color{{/if}} {{#if forfeitWinner}}list-group-item-danger {{/if}}col-md-12 col-sm-12 col-lg-4">
 			<div class="panel-heading" role="tab" id="heading">
 				<div class="center-text"><strong>{{league}}</strong></div>
 				<span class="flag-icon flag-icon-{{player1.country}}"></span> {{player1.name}} vs 
@@ -9,8 +9,12 @@
 				<div>
 					{{#if status}}
 						<span>
-							<a class="game-details btn btn-lg btn-success" data-target="#recap-modal" href="" id="{{id}}" data-toggle="modal">Completed</a>
+							<a class="game-details btn btn-lg btn-success {{#if forfeitWinner}}btn-danger{{/if}}" {{#if forfeitWinner}}disabled{{/if}} {{#unless forfeitWinner}}data-target="#recap-modal" href="" id="{{id}}" data-toggle="modal"{{/unless}}>{{#unless forfeitWinner}}Completed {{else}}Forfeited{{/unless}}</a>
+							{{#unless forfeitWinner}}
 							(<a href="{{matchUrl}}">Download Replays</a>) 
+							{{else}}
+							{{forfeitWinner}} Wins
+							{{/unless}}
 						</span>
 						{{else}}
 						<button class="btn btn-lg" disabled >Not Played</button>

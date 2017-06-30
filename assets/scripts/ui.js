@@ -36,16 +36,21 @@ const organizeFullSchedule = function(rawSchedule) {
             "player2country": rawSchedule[week].player2.country,
             "status": "Not played",
             "completedFlag": rawSchedule[week].status,
+            "forfeitFlag": null,
             "matchUrl": rawSchedule[week].matchUrl,
             "weekdate": null,
-            "forfeitWinner": rawSchedule[week].forfeitWinner,
-            "forfeitText": rawSchedule[week].forfeitText,
+            "forfeitWinner": '',
+            "forfeitText": '',
         };
         if(rawSchedule[week].status === 1) {
         	weekSchedule.status = "Completed";
         }
         else if (rawSchedule[week].status === 2) {
+            weekSchedule.forfeitFlag = 1;
+            weekSchedule.completedFlag = 1;
             weekSchedule.status = "Forfeited";
+            weekSchedule.forfeitWinner = rawSchedule[week].forfeitWinner;
+            weekSchedule.forfeitText = rawSchedule[week].forfeitText;
         }
         return weekSchedule;
     };

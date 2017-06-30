@@ -11,7 +11,11 @@
 		<div id="collapse{{@key}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{@key}}">
 			{{#each this}}
 				<ul class="list-group">
-					<li class="list-group-item {{#if completedFlag}} list-group-item-success {{else}} alt-color {{/if}} col-lg-4 col-md-12 col-sm-12">
+					<li class="list-group-item
+						{{#if completedFlag}} list-group-item-success
+						{{else}} alt-color {{/if}}
+						{{#if forfeitFlag}} list-group-item-danger {{/if}}
+							col-lg-4 col-md-12 col-sm-12">
 						<div class="h4 col-lg-12" role="tab" id="heading{{this}}">
 							<div><b>{{league}}</b></div>
 							<span class="flag-icon flag-icon-{{player1country}}"></span> 
@@ -22,8 +26,11 @@
 								{{#if matchUrl}}
 									<a class="game-details btn btn-lg btn-success" data-target="#recap-modal" href="" id="{{id}}" data-toggle="modal">Completed</a>
 									<a href="{{matchUrl}}">(Download Replays)</a> 
-								{{else}} 
+								{{else}}
 								<button class="btn btn-lg" disabled>{{status}} </button>
+								{{/if}}
+								{{#if forfeitFlag}}
+								<span>{{forfeitWinner}} wins</span>
 								{{/if}}
 							</div>
 						</div>
