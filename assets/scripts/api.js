@@ -55,6 +55,20 @@ const getGameRecap = function(id) {
   });
 };
 
+const forfeitAGame = function(data) {
+  return $.ajax({
+    url: app.host + '/match/' + data.id + '/forfeit',
+    method: 'PUT',
+    data: {
+      winnerName: data.winnerName,
+      text: data.text,
+      password: 'root'
+    },
+    contentType: false,
+    processData: false,
+  });
+};
+
 module.exports = {
 	displayLeagueData,
 	displayPlayerSchedule,

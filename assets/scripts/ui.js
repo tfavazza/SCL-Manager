@@ -10,6 +10,7 @@ const handlebarsRecap = require('../scripts/templates/recap.handlebars');
 const handlebarsRules = require('../scripts/templates/rules.handlebars');
 const handlebarsLastUpdated = require('../scripts/templates/lastUpdated.handlebars');
 const handlebarsVideos = require('../scripts/templates/twitchVideos.handlebars');
+
 const startDate =  new Date('2017-05-13');
 
 const organizeFullSchedule = function(rawSchedule) {
@@ -38,9 +39,14 @@ const organizeFullSchedule = function(rawSchedule) {
             "completedFlag": rawSchedule[week].status,
             "matchUrl": rawSchedule[week].matchUrl,
             "weekdate": null,
+            "forfeitWinner": rawSchedule[week].forfeitWinner,
+            "forfeitText": rawSchedule[week].forfeitText,
         };
         if(rawSchedule[week].status === 1) {
         	weekSchedule.status = "Completed";
+        }
+        else if (rawSchedule[week].status === 2) {
+            weekSchedule.status = "Forfeited";
         }
         return weekSchedule;
     };
@@ -133,11 +139,11 @@ const displayRules = function() {
 
 const displayGameRecap = function(recap) {
     $('#recap-results').html(handlebarsRecap(recap))
-    console.log(recap);
 }
 const displayTwitchVideos = function() {
     $('#twitch-videos').html(handlebarsVideos);
 }
+
 
 module.exports = {
     displayLeagueDataSuccess,
@@ -149,5 +155,5 @@ module.exports = {
     displayRules,
     displayGameRecap,
     displayLastUpdated,
-    displayTwitchVideos,
+    displayTwitchVideos
 };
