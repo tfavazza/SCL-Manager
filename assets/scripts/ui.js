@@ -9,7 +9,6 @@ const handlebarsConfirmation = require('../scripts/templates/confirmation.handle
 const handlebarsRecap = require('../scripts/templates/recap.handlebars');
 const handlebarsRules = require('../scripts/templates/rules.handlebars');
 const handlebarsLastUpdated = require('../scripts/templates/lastUpdated.handlebars');
-const handlebarsVideos = require('../scripts/templates/twitchVideos.handlebars');
 
 const startDate =  new Date('2017-05-13');
 
@@ -140,9 +139,6 @@ const displayRules = function() {
 const displayGameRecap = function(recap) {
     $('#recap-results').html(handlebarsRecap(recap))
 }
-const displayTwitchVideos = function() {
-    $('#twitch-videos').html(handlebarsVideos);
-}
 
 
 module.exports = {
@@ -154,6 +150,5 @@ module.exports = {
     displayThisWeeksSchedule,
     displayRules,
     displayGameRecap,
-    displayLastUpdated,
-    displayTwitchVideos
+    displayLastUpdated
 };
