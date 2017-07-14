@@ -24,6 +24,8 @@ const organizeFullSchedule = function(rawSchedule) {
         "Week-8": [],
         "Week-9": [],
         "Week-10": [],
+
+        // "Championship": []
     };
     const buildAWeek = function(week) {
         let weekSchedule = {
@@ -86,6 +88,11 @@ const organizeFullSchedule = function(rawSchedule) {
             case 10:
                 fixedSchedule["Week-10"].push(buildAWeek(i));
                 break;
+                // for championships, coming soon
+            // case 11: 
+            //     fixedSchedule["Week-11"].push(buildAWeek(i));
+            // case 12: 
+            //     fixedSchedule["Week-12"].push(buildAWeek(i));
         }
     }
     // adds dates to the week button

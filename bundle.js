@@ -314,6 +314,7 @@ webpackJsonp([0],[
 	        "Week-8": [],
 	        "Week-9": [],
 	        "Week-10": []
+
 	    };
 	    var buildAWeek = function buildAWeek(week) {
 	        var weekSchedule = {
@@ -375,6 +376,11 @@ webpackJsonp([0],[
 	            case 10:
 	                fixedSchedule["Week-10"].push(buildAWeek(i));
 	                break;
+	            // for championships, coming soon
+	            // case 11: 
+	            //     fixedSchedule["Week-11"].push(buildAWeek(i));
+	            // case 12: 
+	            //     fixedSchedule["Week-12"].push(buildAWeek(i));
 	        }
 	    }
 	    // adds dates to the week button
@@ -1690,7 +1696,12 @@ webpackJsonp([0],[
 	    + alias2(alias1(((stack1 = (depth0 != null ? depth0.player2 : depth0)) != null ? stack1.name : stack1), depth0))
 	    + "</b></div>\r\n  <div class=\"alt-color h3\">"
 	    + alias2(alias1((depth0 != null ? depth0.scoreSummary : depth0), depth0))
-	    + "</div>\r\n";
+	    + "</div>\r\n"
+	    + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.forfeitWinner : depth0),{"name":"if","hash":{},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
+	},"2":function(container,depth0,helpers,partials,data) {
+	    return "  <div class=\"alt-color h3\">"
+	    + container.escapeExpression(container.lambda((depth0 != null ? depth0.forfeitWinner : depth0), depth0))
+	    + " wins by forfeit</div>\r\n";
 	},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
 	    var stack1;
 
